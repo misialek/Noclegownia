@@ -1,0 +1,52 @@
+Return-path: <>
+Envelope-to: projekt@s60.proserwer.pl
+Delivery-date: Mon, 28 Nov 2011 21:10:45 +0100
+Received: from mailnull by s60.proserwer.pl with local (Exim 4.69)
+	id 1RV7XJ-0007e7-Oh
+	for projekt@s60.proserwer.pl; Mon, 28 Nov 2011 21:10:45 +0100
+Auto-Submitted: auto-replied
+From: Mail Delivery System <Mailer-Daemon@s60.proserwer.pl>
+To: projekt@s60.proserwer.pl
+Subject: Mail failure - no recipient addresses
+Message-Id: <E1RV7XJ-0007e7-Oh@s60.proserwer.pl>
+Date: Mon, 28 Nov 2011 21:10:45 +0100
+
+A message that you sent contained no recipient addresses, and therefore no
+delivery could be attempted.
+
+------ This is a copy of your message, including all the headers. ------
+
+To: 
+Subject: Nowe zadanie: Wymagania funkcjonalne / niefunkcjonalne
+Date: Mon, 28 Nov 2011 21:10:45 +0100
+Return-Path: 
+From: Administrator <>
+Message-ID: <c0394528f15110be50be81650779bfa2@projekt.xaa.pl>
+X-Priority: 1
+X-Mailer: PHPMailer [version 1.73]
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="iso-8859-1"
+
+Zadanie zosta³o przypisane tobie:
+
+Zadanie : Wymagania funkcjonalne / niefunkcjonalne
+Rozpoczêto : 2011-11-28
+Termin : 2011-12-03
+Postêp : 10 %
+Priorytet : Bardzo wysoki
+Status : Rozpoczêty
+Opis : Okre¶lenie wymagañ funcjonalnych i niefunkcjonalych dla hurtowni.
+
+Projekt : Projekt zespo³owy - Sieæ hurtowni (1)
+Klient : Robert Jacek Tomczak
+
+Aby zobaczyæ wiêcej informacji wejd¼ na:
+http://projekt.xaa.pl/phpcollab//general/login.php?url=tasks/viewtask.php%3Fid=1
+
+--
+To powiadomienie zosta³o wygenerowane przez PhpCollab.
+
+Aby wej¶æ na stronê PhpCollab, wpisz:
+http://projekt.xaa.pl/phpcollab//
+

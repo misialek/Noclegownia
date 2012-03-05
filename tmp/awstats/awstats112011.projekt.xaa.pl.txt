@@ -1,0 +1,354 @@
+AWSTATS DATA FILE 7.0 (build 1.971)
+# If you remove this file, all statistics for date 201111 will be lost/reset.
+# Last config file used to build this data file was /home/projekt/tmp/awstats/awstats.projekt.xaa.pl.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 27
+POS_GENERAL 2007                
+POS_TIME 2690                
+POS_VISITOR 6185                
+POS_DAY 6755                
+POS_DOMAIN 3282                
+POS_LOGIN 3513                
+POS_ROBOT 3668                
+POS_WORMS 3800                
+POS_EMAILSENDER 3931                
+POS_EMAILRECEIVER 4074                
+POS_SESSION 6892                
+POS_SIDER 7085                
+POS_FILETYPES 4209                
+POS_DOWNLOADS 4393                
+POS_OS 4479                
+POS_BROWSER 4546                
+POS_SCREENSIZE 4685                
+POS_UNKNOWNREFERER 4759                
+POS_UNKNOWNREFERERBROWSER 4846                
+POS_ORIGIN 4928                
+POS_SEREFERRALS 5065                
+POS_PAGEREFS 5209                
+POS_SEARCHWORDS 5357                
+POS_KEYWORDS 5509                
+POS_MISC 2354                
+POS_ERRORS 5568                
+POS_CLUSTER 3369                
+POS_SIDER_404 5676                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20111201001522 497 148585 16473390013479
+FirstTime 20111128201036
+LastTime 20111130235648
+LastUpdate 20111201041211 497 0 496 0 0
+TotalVisits 24                  
+TotalUnique 12                  
+MonthHostsKnown 0                   
+MonthHostsUnknown 12                  
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+QuickTimeSupport 0 0 0
+JavaEnabled 0 0 0
+JavascriptDisabled 0 0 0
+PDFSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+AddToFavourites 0 0 0
+RealPlayerSupport 0 0 0
+TotalMisc 0 0 0
+DirectorSupport 0 0 0
+FlashSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 0 0 0 0 0 0
+1 2 28 65816 0 2 0
+2 0 0 0 0 0 0
+3 0 0 0 1 1 0
+4 0 0 0 0 0 0
+5 0 0 0 2 4 0
+6 0 0 0 0 0 0
+7 0 0 0 0 0 0
+8 0 0 0 1 1 0
+9 0 0 0 1 1 0
+10 0 0 0 0 0 0
+11 26 54 562903 2 4 8662
+12 0 0 0 1 1 0
+13 0 0 0 1 1 0
+14 13 40 310957 3 10 4509
+15 1 1 37002 0 1 0
+16 2 2 74004 0 2 0
+17 40 130 846019 5 8 23156
+18 17 44 354674 3 16 8575
+19 2 2 13708 0 2 0
+20 50 123 525746 11 21 34355
+21 228 606 3771583 49 76 320315
+22 186 416 3064787 30 58 149770
+23 7 33 209126 1 2 0
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 25 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 1
+pl 574 1479 9836325
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 0
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 25 first Hits must be first (order not required for others)
+BEGIN_ROBOT 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 7
+css 49 79336 0 0
+php 566 8045472 0 0
+html 8 5721 0 0
+jpg 2 356 0 0
+js 122 912105 0 0
+doc 3 731136 0 0
+gif 729 62199 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 1
+/phpcollab/tab/tabelki.doc 3 0 731136
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS 3
+winxp 54
+linux 47
+win7 1378
+END_OS
+
+# Browser ID - Hits
+BEGIN_BROWSER 5
+chrome15.0.874.121 47
+firefox8.0 1126
+firefox9.0 54
+chrome15.0.900.0 134
+firefox11.0 118
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 0
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 0
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 72 73
+From1 0 0
+From2 0 0
+From3 0 0
+From4 502 1406
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 0
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 25 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 0
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 25 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 3
+302 97 548862
+301 2 480
+404 23 0
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referer
+BEGIN_SIDER_404 4
+/robots.txt 4 -
+/phpcollab/includes/htmlarea/plugins/TableOperations/lang/pl.js 7 http://projekt.xaa.pl/phpcollab/newsdesk/editnews.php
+/czerwonak/index.php 11 -
+/phpcollab/installation/setup.php 1 -
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 25 first Hits must be first (order not required for others)
+BEGIN_VISITOR 12
+95.49.122.167 280 581 3420783 20111128224001
+85.221.192.12 75 328 1937588 20111130235648
+83.23.17.74 40 99 507045 20111129014432
+95.49.96.248 31 64 770520 20111129221516
+83.21.104.111 28 82 584120 20111130210649
+31.63.193.157 28 61 746620 20111130225130
+83.3.196.65 26 54 562903 20111129115536
+194.9.66.170 20 61 476880 20111130171400
+194.9.66.138 19 20 248072 20111130180138
+95.49.7.59 18 72 329927 20111130213353
+31.63.219.174 5 27 108177 20111130172947
+31.63.216.188 4 30 143690 20111129201709
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 3
+20111128 357 835 4842320 4
+20111129 68 209 1744829 6
+20111130 149 435 3249176 14
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 6
+1h+ 5
+5mn-15mn 2
+2mn-5mn 2
+30s-2mn 3
+0s-30s 7
+30mn-1h 5
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 25 first Pages must be first (order not required for others)
+BEGIN_SIDER 92
+/phpcollab/general/login.php 64 277179 7 3
+/phpcollab/general/home.php 37 1454775 6 8
+/phpcollab/projects/viewproject.php 32 1731535 1 5
+/phpcollab/administration/admin.php 27 135557 0 0
+/phpcollab/tasks/viewtask.php 22 613985 0 1
+/phpcollab/projects/listprojects.php 21 244264 2 1
+/phpcollab/users/listusers.php 19 256456 0 0
+/test.php 19 2337 0 0
+/phpcollab/bookmarks/listbookmarks.php 18 145315 0 0
+/phpcollab/phases/viewphase.php 16 388820 0 0
+/phpcollab/topics/viewtopic.php 15 130781 0 1
+/phpcollab/installation/setup.php 15 71977 0 0
+/phpcollab/calendar/viewcalendar.php 13 163553 0 0
+/phpcollab/phases/graphtasks.php 13 29004 0 0
+/phpcollab/projects_site/home.php 12 55652 0 0
+/phpcollab/general/login.php 11 47804 3 1
+/phpcollab/topics/viewtopic.php 11 96215 4 0
+/phpcollab/tasks/edittask.php 10 110021 0 0
+/phpcollab/projects/viewproject.php 10 529201 0 0
+/phpcollab/preferences/updateuser.php 9 65464 0 0
+/phpcollab/users/edituser.php 9 59218 0 0
+/phpcollab/users/viewuser.php 7 61410 0 0
+/phpcollab/bookmarks/viewbookmark.php 7 38539 0 0
+/phpcollab/bookmarks/listbookmarks.php 7 51886 0 0
+/phpcollab/newsdesk/viewnews.php 6 79611 0 0
+/ 3 1293 1 0
+/phpcollab/projects/addprojectsite.php 1 4070 0 0
+/phpcollab/administration/admin.php 1 5009 0 0
+/phpcollab/bookmarks/editbookmark.php 3 15649 0 0
+/phpcollab/teams/adduser.php 1 10983 0 0
+/phpcollab/phases/listphases.php 1 12186 0 0
+/phpcollab/administration/mycompany.php 1 5076 0 0
+/phpcollab/topics/addpost.php 3 17933 0 0
+/phpcollab/support/support.php 1 6933 0 0
+/phpcollab/calendar/graphtasks.php 1 2039 0 0
+/phpcollab/tasks/viewtask.php 3 84749 0 0
+/phpcollab/projects_site/showallcontacts.php 3 14589 0 0
+/phpcollab/tasks/listtasks.php 2 31054 0 0
+/phpcollab/projects_site/graphtasks.php 1 3210 0 0
+/phpcollab/projects/editproject.php 4 25390 0 0
+/phpcollab/newsdesk/editnews.php 5 28890 0 1
+/phpcollab/projects_site/showallsupport.php 1 4989 0 0
+/_______SERWER_WWW_AKTYWNY_-_PRZECZYTAJ_TO______.html 1 1786 0 0
+/phpcollab/clients/viewclient.php 4 63509 0 0
+/phpcollab/clients/editclient.php 1 5012 0 0
+/phpcollab/calendar/viewcalendar.php 1 14408 0 0
+/phpcollab/reports/createreport.php 1 8699 0 0
+/phpcollab/topics/listtopics.php 2 17780 0 0
+/phpcollab/tasks/historytask.php 2 8465 0 0
+/phpcollab/tasks/listtasks.php 1 15527 0 0
+/phpcollab/topics/addpost.php 4 32123 0 1
+/phpcollab/bookmarks/viewbookmark.php 3 13839 0 0
+/phpcollab/phases/viewphase.php 2 49228 0 0
+/phpcollab/projects_site/changepassword.php 2 8742 0 0
+/phpcollab/newsdesk/listnews.php 1 10533 0 0
+/phpcollab/administration/systeminfo.php 2 13886 0 0
+/phpcollab/services/listservices.php 3 23301 0 0
+/phpcollab/users/emailusers.php 2 8860 0 0
+/phpcollab/search/createsearch.php 1 4106 0 0
+/phpcollab/general/license.php 3 52074 0 0
+/phpcollab/reports/createreport.php 6 52688 0 0
+/phpcollab/projects_site/showallthreadtopics.php 1 4988 0 0
+/phpcollab/projects_site/showallteamtasks.php 1 6274 0 0
+/phpcollab/projects/viewprojectsite.php 6 61242 0 0
+/phpcollab/projects_site/showcalendar.php 1 13147 0 0
+/phpcollab/administration/phpmyadmin.php 1 8470 0 0
+/phpcollab/newsdesk/listnews.php 6 61328 0 0
+/phpcollab/administration/listlogs.php 2 9260 0 0
+/phpcollab/administration/updatesettings.php 1 16074 0 0
+/phpcollab/teams/addclientuser.php 3 20812 0 0
+/phpcollab/calendar/graphtasks.php 3 6668 0 0
+/phpcollab/projects/deleteprojectsite.php 1 4042 0 0
+/phpcollab/newsdesk/viewnews.php 1 13430 0 0
+/phpcollab/general/sendpassword.php 2 5439 0 0
+/phpcollab/services/editservice.php 1 4190 0 0
+/phpcollab/clients/listclients.php 5 41801 0 0
+/phpcollab/tasks/historytask.php 1 4229 0 0
+/phpcollab/tab/ 3 816 0 0
+/phpcollab/search/createsearch.php 1 4113 0 0
+/phpcollab/administration/phpinfo.php 3 55961 0 0
+/phpcollab/tasks/graphtasks.php 1 3657 0 1
+/1.php 6 369 0 0
+/phpcollab/installation/ 1 1826 0 0
+/phpcollab/reports/resultsreport.php 2 9640 0 0
+/phpcollab/topics/addtopic.php 1 4867 0 1
+/phpcollab/general/home.php 2 88733 0 0
+/phpcollab/tasks/graphtasks.php 2 7314 0 0
+/phpcollab/projects/listprojects.php 3 35913 0 0
+/phpcollab/projects_site/doclists.php 1 5018 0 0
+/phpcollab/phases/graphtasks.php 1 2143 0 0
+/phpcollab/support/listrequests.php 1 6799 0 0
+/phpcollab/general/systemrequirements.php 3 23463 0 0
+END_SIDER
