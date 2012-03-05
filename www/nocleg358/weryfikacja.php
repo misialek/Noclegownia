@@ -13,7 +13,7 @@ if ($_GET['weryfikacja'] == 'potwierdz') {
     // je?eli nie ma, wtedy zmienia si? jego status, je?eli nie up?yn?o 48 godzin od rejestracji
     $wynik = mysql_query("SELECT * FROM $tabela WHERE kod='$kod' and status=1");
     if (mysql_num_rows($wynik) == 1) {
-        echo '<p>Aktywowałeś juź swoje konto.</p>';
+        echo '<p>Aktywowałeś/aś juź swoje konto.</p>';
         exit;
     } else {
         $wynik = mysql_query("DELETE FROM $tabela
