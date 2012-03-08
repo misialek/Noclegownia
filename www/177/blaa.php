@@ -26,7 +26,7 @@ echo'<a href="logowanie.php">Zaloguj sie</a>';
 
 
 <!--[if IE]>
-<style type="text/css"> 
+<style type="text/css"> ffff
 /* place css fixes for all versions of IE in this conditional comment */
 #sidebar1 { padding-top: 30px; }
 #mainContent { zoom: 1; padding-top: 15px; }
