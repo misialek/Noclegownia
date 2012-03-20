@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Home</title>
+<title>Administrator - Home</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="../css/layout.css" type="text/css" media="all">
@@ -25,48 +25,21 @@
 	<script type="text/javascript" src="js/html5.js"></script>
 <![endif]-->
 <script type="text/javascript">
-  $(document).ready(function(){
-
-
-$(".reg").colorbox({iframe:true, width:"465px", height:"450px"});
-$(".log").colorbox({iframe:true, width:"465px", height:"450px"});
-		});
-	</script>
-</head>
+  $(document).ready(function(){$(".reg").colorbox({iframe:true, width:"465px", height:"470px"});$(".rez").colorbox({iframe:true, width:"1000", height:"600"});$(".zarz").colorbox({iframe:true, width:"600px", height:"520px"});$(".log").colorbox({iframe:true, width:"465px", height:"470px"});});
+	</script>		<?phpsession_start();if (!isset($_SESSION['login'])) { echo'<center>';echo'<font size="40">';echo'<font color="black"';echo'<br><br><br><br><br><br><br>';echo 'Ta strona wymaga zalogowania';echo'<br>';echo'<a href="../logowanie.php">Zaloguj sie</a>';  // header("Location: index.php");   exit;}?>
+</head>
 <body id="page1">
 <div class="extra">
 	<div class="main">
 <!-- header -->
 		<header>
-			<div class="wrapper">
-				<h1><a href="index.html" id="logo">Tania baza noclegowa</a></h1>
-				<div class="right">
-					<div class="wrapper">
-						<form id="search" action="" method="post">
-							<div class="bg">
-								<input type="submit" class="submit" value="">
-								<input type="text" class="input">
-							</div>
-						</form>
-					</div>
-					<div class="wrapper">
-						<nav>
-							<ul id="top_nav">
-								<li><a class='reg' href="regreg.php"  >Rejestracja</a></li>
-																<li><a class='log' href="logowanie.php">Logowanie</a></li>
-								<li><a href="#">Pomoc</a></li>
-							</ul>
-						</nav>
-					</div>	
-				</div>
-			</div>	
+			<div class="wrapper">				<h1><a href="../index.php" id="logo">Tania baza noclegowa</a></h1><?phpecho '<font size="2">Zalogowany: <b>' .$_SESSION['login']. '</b></font>';?>											<div class="right">					<div class="wrapper">						<!--<form id="search">-->							<div>								<a class='right' href="admin/index.php">Administracja</a>							</div>						<!--</form>-->					</div>					<div class="wrapper">						<nav>						<ul id="top_nav"><li><a href="../przegladaj.php?wylo=tak">Wyloguj</a></li>	<li><a class='rez' href="../rezerwacje/uzytkownik.php">Rezerwacje</a></li><li><a class='zarz' href="../zarzadzanie/uzytkownik.php">Zarządzanie</a></li>							</ul>						</nav>					</div>					</div>			</div>	
 			<nav>
 				<ul id="menu">
 					<li><a href="index.php" class="nav2">Uzytkownicy</a></li>
-					<li><a href="#" class="nav2">Noclegi</a></li>
-					<li><a href="#" class="nav2">Pokoje</a></li>
+					<li><a href="noclegi.php" class="nav2">Noclegi</a></li>
+					<li><a href="pokoje.php" class="nav2">Pokoje</a></li>
 					<li><a href="#" class="nav2">Standard</a></li>
-					<li class="end"><a href="#" class="nav2">Podstrony</a></li>
 					<li class="end"><a href="#" class="nav2">Finanse</a></li>
 				</ul>
 			</nav>
