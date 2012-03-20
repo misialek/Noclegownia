@@ -32,7 +32,7 @@ if (!isset($_SESSION['login'])) { // dostęp dla niezalogowanego użytkownika
             $informacja = mysql_fetch_array($wynik);
             $_SESSION["login"] = $informacja["login"];
 	        $_SESSION['zalogowany']=1;
-			header('Location: colorbox.php ');
+			header('Location: odswiez.php');
         } else {
             echo '<p>Zostały wprowadzone nieprawidłowe dane</p>';
         }
@@ -42,7 +42,7 @@ if (!isset($_SESSION['login'])) { // dostęp dla niezalogowanego użytkownika
  
 } else {
 	$_SESSION['zalogowany']=1;
-	header('Location: colorbox.php ');
+	header('Location: odswiez.php');
     // zalogowany użytkownik zostaje przekierowany na stronę główną
 }
  

@@ -2,8 +2,7 @@
 session_start();
 include '../db.php';
 $login = $_SESSION['login'];
-if(@$_SESSION['zalogowany']==1)
-
+if(@$_SESSION['zalogowany']==1){
 
 if ($_POST["zmien_haslo"]) {
 		$blad = 0;
@@ -11,9 +10,9 @@ if ($_POST["zmien_haslo"]) {
         $haslo = $_POST["haslo"];
         $haslo2 = $_POST["haslo2"];
         $haslo3 = $_POST["haslo3"];
-				if (strlen($haslo2) < 6 or strlen($haslo2) > 30 ) {
+				if (strlen($haslo2) < 6 or strlen($haslo2) > 12 ) {
 		$blad++;
-            echo '<p>Proszę poprawnie wpisać hasło (od 6 znaków do 30 znaków). </p>';}
+            echo '<p>Proszę poprawnie wpisać hasło (od 6 znaków do 12 znaków). </p>';}
 			
 		if ($haslo2 !== $haslo3) {
 		$blad++;
@@ -40,10 +39,9 @@ if ($_POST["zmien_haslo"]) {
             Twoje hasło zostało zmienione";
             mail($email['email'], "Zmiana hasła", $list, "From: <biuro@spowiedz.xaa.pl>");
 			echo '<p>Hasło zostało zmienione<br>Zaloguj się ponownie</p>';}
-        } else {
-            echo '<p>Zostały wprowadzone nieprawidłowe dane</p>';
+        }
         }
         mysql_close($polaczenie);
 }
-}
+}else{header('Location: ../index.php ');}
 ?>

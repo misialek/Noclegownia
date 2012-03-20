@@ -4,17 +4,13 @@ if(isset($_GET['wylo']) && $_GET['wylo']=='tak'){
 	session_destroy();
 	$_SESSION = array();
 	$_SESSION['zalogowany']=0;
-	header('Location: index.php ');}
-
-if(@$_SESSION['zalogowany']==0)
-{
-    header('Location: przegladaj_.php ');
-}
+	header('Location: przegladaj.php ');}
+include 'db.php';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-<title>Home</title>
+<title>Przeglądaj pokoje</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
@@ -38,23 +34,29 @@ if(@$_SESSION['zalogowany']==0)
 <![endif]-->
 <script type="text/javascript">
   $(document).ready(function(){
-$(".reg").colorbox({iframe:true, width:"465px", height:"470px"});
 $(".rez").colorbox({iframe:true, width:"1000", height:"600"});
 $(".zarz").colorbox({iframe:true, width:"600px", height:"520px"});
-$(".log").colorbox({iframe:true, width:"465px", height:"470px"});
+$(".zlec").colorbox({iframe:true, width:"600px", height:"400px"});
+$(".log").colorbox({iframe:true, width:"465px", height:"465px"});
+$(".reg").colorbox({iframe:true, width:"465px", height:"470px"});
+$(".rez").colorbox({iframe:true, width:"1000", height:"600"});
  });
 	</script>
 </head>
 <body id="page1">
+<?php
+if(@$_SESSION['zalogowany']==1){
+$login = $_SESSION['login'];
+$inf=mysql_query("SELECT * FROM uzytkownik WHERE login='$login'");
+$info=mysql_fetch_assoc($inf);
+echo '<table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed; 	text-align: center;  color: #FFFFFF;background-color: #313131; width:100%;"> 
+<td><strong>Zalogowany: '.$info['imie'].' '.$info['nazwisko'].'</strong></td></table>';}
+?>
+
 <div class="extra">
 	<div class="main">
-<!-- header -->
-		<header>
 			<div class="wrapper">
 				<h1><a href="index.html" id="logo">Tania baza noclegowa</a></h1>
-<?php
-echo '<font size="2">Zalogowany: <b>' .$_SESSION['login']. '</b></font>';
-?>
 				<div class="right">
 					<div class="wrapper">
 						<form id="search">
@@ -65,9 +67,20 @@ echo '<font size="2">Zalogowany: <b>' .$_SESSION['login']. '</b></font>';
 					<div class="wrapper">
 						<nav>
 						<ul id="top_nav">
+<?php
+if(@$_SESSION['zalogowany']==1){
+?>
 <li><a href="przegladaj.php?wylo=tak">Wyloguj</a></li>	
 <li><a class='rez' href="rezerwacje/uzytkownik.php">Rezerwacje</a></li>
 <li><a class='zarz' href="zarzadzanie/uzytkownik.php">Zarządzanie</a></li>
+<?php
+}else{
+?>
+<li><a class='reg' href="regreg.php"  >Rejestracja</a></li>
+<li><a class='log' href="logowanie.php">Logowanie</a></li>
+<?php
+}
+?>
 							</ul>
 						</nav>
 					</div>	
@@ -131,14 +144,80 @@ echo '<font size="2">Zalogowany: <b>' .$_SESSION['login']. '</b></font>';
 					</form>
 				</div>
 			</article>
-			<article class="col1 pad_left1">
-				<div class="text">
-					<h2>Przeglądaj</h2>
+			<article class="col2 pad_left1">
+			<h2>Przegladaj</h2>
+<?php
+
+if(isset($_GET['pok'])){
+$id=($_GET['pok']);
+mysql_query("SET NAMES utf8");
+$sql="SELECT * FROM noclegownia WHERE id='$id'";
+  $query=mysql_query($sql);
+  while($result=mysql_fetch_assoc($query)){
+			echo '<article class="col2">
+				<div class="wrapper under">
+					<figure class="left marg_right1"><img src="images/page1_img4.jpg" alt=""></figure>
+					<p class="pad_bot2"><strong>'.$result['nazwa'].', <b>'.$result['typ'].'</b></strong></p>
+					<p class="pad_bot2">'.$result['opis'].'</p>
+					<p class="pad_bot2">'.$result['miejscowosc'].', '.$result['kod_pocztowy'].', '.$result['kod_pocztowy'].'</p>
 				</div>
+				</article>';
+// pobieram pokoje
+	mysql_query("SET NAMES utf8");
+	$sql="SELECT * FROM pokoj WHERE id_miejsce='$id'";
+	$query=mysql_query($sql);
+	while($result=mysql_fetch_assoc($query))
+	{
+	  echo'<article class="col2"><div class="wrapper under"><p>'.$result['wc'].'</p>';
+	  echo'<a align="right" class="zlec" class="button" href="rezerwacje/rezerwacja_kl.php?rez='.$result['id_pok'].'"><button>Rezerwuj</button></a><br /><br />Obecne rezerwacje pokoju: ';
+	  	$miejsce=$result['id_miejsce'];
+		$sql="SELECT * FROM rezerwacje WHERE id_pokoj=$miejsce GROUP BY data_od";
+		$rezerwacje=mysql_query($sql);
+		while($rezerwacja=mysql_fetch_assoc($rezerwacje))
+		{echo ''.date('d.m.Y' , $rezerwacja['data_od']).' - '.date('d.m.Y' , $rezerwacja['data_do']).',&nbsp;&nbsp;';}
+		echo '</div></article>';
+	}
+ }
+echo '<br /><br /><a class="button" href="przegladaj.php?start='.$_GET['start'].'">Wstecz</a>';
+}else{
+if(isset($_GET['start'])){
+$start = $_GET['start'];}else{header('Location: przegladaj.php?start=0');}
+$na_stronie = 2;
+
+mysql_query("SET NAMES utf8");
+$sql = "SELECT * FROM noclegownia LIMIT ".($start).",".$na_stronie."";
+
+$query=mysql_query($sql);
+if( mysql_num_rows( $query ) > 0)
+{
+//$row = mysql_fetch_row($query))
+  while($result=mysql_fetch_assoc($query))
+  {
+  	echo '<article class="col2">
+				<div class="wrapper under">
+					<figure class="left marg_right1"><img src="images/page1_img4.jpg" alt=""></figure>
+					<p class="pad_bot2"><strong>'.$result['nazwa'].', <b>'.$result['typ'].'</b></strong></p>
+					<p class="pad_bot2">'.$result['opis'].'</p>
+					<p class="pad_bot2">'.$result['miejscowosc'].', '.$result['kod_pocztowy'].', '.$result['ulica'].'</p><br>
+					<a href="przegladaj.php?start='.$_GET['start'].'&pok='.$result['id'].'" class="marker_2"></a>
+				</div>
+				</article>';
+	echo '<hr>';
+ }
+$wykonaj=mysql_query("SELECT * FROM noclegownia");
+$znaleziono=mysql_num_rows($wykonaj);
+if($znaleziono>$na_stronie) {
+print '<center>Strona | ';
+for($i=0; $i<ceil($znaleziono/$na_stronie); $i++)
+print '<a href="przegladaj.php?start='.($i*$na_stronie).'"><b>'.($i+1).'</b></a> | ';
+}  
+print '</center>';
+
+}
+}
+?>
 			</article>
-		</header>
-        
-	<div class="block"></div>
+        <section id="content"></section>
 </div>
 <div class="body1">
 	<div class="main">

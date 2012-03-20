@@ -4,17 +4,13 @@ if(isset($_GET['wylo']) && $_GET['wylo']=='tak'){
 	session_destroy();
 	$_SESSION = array();
 	$_SESSION['zalogowany']=0;
-	header('Location: index.php ');}
-
-if(@$_SESSION['zalogowany']==0)
-{
-    header('Location: promocje_.php ');
-}
+	header('Location: promocje.php ');}
+include 'db.php';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-<title>Home</title>
+<title>Promocje</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
@@ -38,23 +34,30 @@ if(@$_SESSION['zalogowany']==0)
 <![endif]-->
 <script type="text/javascript">
   $(document).ready(function(){
-$(".reg").colorbox({iframe:true, width:"465px", height:"470px"});
 $(".rez").colorbox({iframe:true, width:"1000", height:"600"});
 $(".zarz").colorbox({iframe:true, width:"600px", height:"520px"});
-$(".log").colorbox({iframe:true, width:"465px", height:"470px"});
+$(".zlec").colorbox({iframe:true, width:"600px", height:"400px"});
+$(".log").colorbox({iframe:true, width:"465px", height:"465px"});
+$(".reg").colorbox({iframe:true, width:"465px", height:"470px"});
+$(".rez").colorbox({iframe:true, width:"1000", height:"600"});
  });
 	</script>
 </head>
 <body id="page1">
+<?php
+if(@$_SESSION['zalogowany']==1){
+$login = $_SESSION['login'];
+$inf=mysql_query("SELECT * FROM uzytkownik WHERE login='$login'");
+$info=mysql_fetch_assoc($inf);
+echo '<table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed; 	text-align: center;  color: #FFFFFF;background-color: #313131; width:100%;"> 
+<td><strong>Zalogowany: '.$info['imie'].' '.$info['nazwisko'].'</strong></td></table>';}
+?>
+
 <div class="extra">
 	<div class="main">
-<!-- header -->
-		<header>
+	<header>
 			<div class="wrapper">
 				<h1><a href="index.html" id="logo">Tania baza noclegowa</a></h1>
-<?php
-echo '<font size="2">Zalogowany: <b>' .$_SESSION['login']. '</b></font>';
-?>
 				<div class="right">
 					<div class="wrapper">
 						<form id="search">
@@ -65,9 +68,20 @@ echo '<font size="2">Zalogowany: <b>' .$_SESSION['login']. '</b></font>';
 					<div class="wrapper">
 						<nav>
 						<ul id="top_nav">
-<li><a href="przegladaj.php?wylo=tak">Wyloguj</a></li>	
+<?php
+if(@$_SESSION['zalogowany']==1){
+?>
+<li><a href="promocje.php?wylo=tak">Wyloguj</a></li>	
 <li><a class='rez' href="rezerwacje/uzytkownik.php">Rezerwacje</a></li>
 <li><a class='zarz' href="zarzadzanie/uzytkownik.php">Zarządzanie</a></li>
+<?php
+}else{
+?>
+<li><a class='reg' href="regreg.php"  >Rejestracja</a></li>
+<li><a class='log' href="logowanie.php">Logowanie</a></li>
+<?php
+}
+?>
 							</ul>
 						</nav>
 					</div>	
