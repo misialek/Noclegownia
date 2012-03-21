@@ -55,12 +55,15 @@ $(".log").colorbox({iframe:true, width:"465px", height:"470px"});
 <?php
 echo '<font size="2">Zalogowany: <b>' .$_SESSION['login']. '</b></font>';
 ?>
+
+							
 				<div class="right">
 					<div class="wrapper">
-						<form id="search">
+						<!--<form id="search">-->
 							<div>
+								<a class='right' href="admin/index.php">Administracja</a>
 							</div>
-						</form>
+						<!--</form>-->
 					</div>
 					<div class="wrapper">
 						<nav>

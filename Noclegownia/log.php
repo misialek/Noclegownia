@@ -12,7 +12,7 @@ if (!isset($_SESSION['login'])) { // dostęp dla niezalogowanego użytkownika
         $login = $_POST["login"];
         $haslo = $_POST["haslo"];
  
-        $haslo = md5($haslo); // szyfrowanie podanego hasła
+       // $haslo = md5($haslo); // szyfrowanie podanego hasła
  
         $wynik=mysql_query("SELECT * FROM $tabela WHERE
        login='$login' and haslo='$haslo' and status=0");
@@ -32,7 +32,7 @@ if (!isset($_SESSION['login'])) { // dostęp dla niezalogowanego użytkownika
             $informacja = mysql_fetch_array($wynik);
             $_SESSION["login"] = $informacja["login"];
 	        $_SESSION['zalogowany']=1;
-			header('Location: colorbox.php ');
+			header('Location: admin/index.php ');
         } else {
             echo '<p>Zostały wprowadzone nieprawidłowe dane</p>';
         }
@@ -42,7 +42,7 @@ if (!isset($_SESSION['login'])) { // dostęp dla niezalogowanego użytkownika
  
 } else {
 	$_SESSION['zalogowany']=1;
-	header('Location: colorbox.php ');
+	header('Location: admin/index.php ');
     // zalogowany użytkownik zostaje przekierowany na stronę główną
 }
  
