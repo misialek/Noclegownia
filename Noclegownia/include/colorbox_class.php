@@ -6,4 +6,10 @@ $(".zlec").colorbox({iframe:true, width:"600px", height:"400px"});
 $(".log").colorbox({iframe:true, width:"465px", height:"465px"});
 $(".reg").colorbox({iframe:true, width:"465px", height:"470px"});
  });
+  function closeColorbox() { 
+                $.fn.colorbox.close(); 
+                    } 
+ function reloadURL() {  
+        window.location.reload();  
+    } 
 </script>
