@@ -1,7 +1,0 @@
-Disk quotas for user projekt (uid 8004): 
-     Filesystem  blocks   quota   limit   grace   files   quota   limit   grace
-      /dev/sda2    8252  307200  307200             774       0       0        
-      /dev/sda3       0  307200  307200               0       0       0        
-      /dev/sdb3       0  307200  307200               0       0       0        
-      /dev/sdb2       0  307200  307200               1       0       0        
-      /dev/sdb1       0  307200  307200               0       0       0        

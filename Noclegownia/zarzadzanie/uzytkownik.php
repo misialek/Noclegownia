@@ -1,16 +1,16 @@
-﻿<?php
+﻿<link rel="stylesheet" href="../css/style2.css" type="text/css" media="all">
+<?php
 session_start();
 include '../db.php';
 $login = $_SESSION['login'];
 if(@$_SESSION['zalogowany']==1)
 {
-	$uprawnienia=(mysql_query("SELECT * FROM uzytkownik WHERE login='$login' AND typ_konta=1"));
+	$uprawnienia=(mysql_query("SELECT * FROM uzytkownik WHERE login='$login' AND typ_konta=20"));
     	if (mysql_num_rows($uprawnienia) == 1) {header('Location: recepcionista.php ');
 	exit;}
-	$uprawnienia=(mysql_query("SELECT * FROM uzytkownik WHERE login='$login' AND typ_konta=2"));
+	$uprawnienia=(mysql_query("SELECT * FROM uzytkownik WHERE login='$login' AND typ_konta=10"));
 	if (mysql_num_rows($uprawnienia) == 1) {header('Location: admin.php ');
 	exit;}
-}
 ?>
 <html>
 <head>
@@ -24,16 +24,25 @@ if(@$_SESSION['zalogowany']==1)
 </head>
 
 <body>
+<script type="text/javascript">
+function confDel( url )
+{
+   if( confirm( 'Czy na pewno chcesz usunąć konto?') )
+   {
+      window.top.location.href = url;
+   }
+}
+</script>
 
      <b><h1 class="style1">Zarządzanie </b>kontem</h1>
-		<br /><br />
+		<br /><br /><br /></ br><br />
      <table style="width: 54%; height: 48px" align="center">
 	<tr>
 		<td class="style1">Zmień dane osobowe</td>
 	</tr>
 	<tr>
 		<td class="style1">
-		<a href="">
+		<a href="zmien_da.php">
 		<button>Zmień</button></a></td>
 	</tr>
 </table>
@@ -55,9 +64,12 @@ if(@$_SESSION['zalogowany']==1)
 	</tr>
 	<tr>
 		<td class="style1">
-		<a href="">
+		<a href="" onclick="confDel('usun.php');">
 		<button>Usuń</button></a></td>
 	</tr>
 </table>
 </body>
 </html>
+<?php
+}else{header('Location: ../index.php ');}
+?>

@@ -1,11 +1,16 @@
 ﻿<?php ob_start(); 
 
+
+ 
 session_start(); // rozpoczęcie sesji
  
 if (!isset($_SESSION['login'])) { // dostęp dla niezalogowanego użytkownika
  
     include 'db.php'; // poł±czenie się z baz± danych
     $tabela = 'uzytkownik'; // zdefiniowanie tabeli MySQL
+   //require_once('recaptchalib.php'); // doł±czenie modułu reCAPTCHA
+ //$privatekey = '6LdCPMUSAAAAAGWSvi767yBGQtFjntar4wQoKfIx'; // prywatny klucz reCAPTCHA
+ //   $publickey = '6LdCPMUSAAAAANr7mf2hpdiwI5aYKJE2DNidMAvn'; // publiczny klucz reCAPTCHA
  
     if ($_POST["wyslane"]) { // jeżeli formularz został wysłany, to wykonuje się poniższy skrypt
  
@@ -17,10 +22,13 @@ if (!isset($_SESSION['login'])) { // dostęp dla niezalogowanego użytkownika
         $email2 = htmlspecialchars(stripslashes(strip_tags(trim($_POST["email2"]))), ENT_QUOTES);
         $imie = htmlspecialchars(addslashes(strip_tags(trim($_POST["imie"]))), ENT_QUOTES);
         $nazwisko = htmlspecialchars(addslashes(strip_tags(trim($_POST["nazwisko"]))), ENT_QUOTES);
-		$blad = 0;
+       // $resp = recaptcha_check_answer ($privatekey,
+       //         $_SERVER["REMOTE_ADDR"],
+        //        $_POST["recaptcha_challenge_field"],
+        //        $_POST["recaptcha_response_field"]);
  
         // system sprawdza czy prawidło zostały wprowadzone dane
-       if ((strlen($login) < 3 or strlen($login) > 30) and (preg_match('/^[a-z\d_]{2,20}$/i', $login))){
+       if (strlen($login) < 3 or strlen($login) > 30 or !eregi("^[a-zA-Z0-9_.]+$", $login)) {
             $blad++;
             echo '<p>Proszę poprawny wprowadzić login (od 3 do 30 znaków).</p>';
         } else {
@@ -38,7 +46,7 @@ if (!isset($_SESSION['login'])) { // dostęp dla niezalogowanego użytkownika
             $blad++;
             echo '<p> Podane hasła nie s± ze sob± zgodne. </p>';
         }
-        if (!preg_match("/[(@)]/", $email)) {
+        if (!eregi("^[0-9a-z_.-]+@([0-9a-z-]+\.)+[a-z]{2,4}$", $email)) {
             $blad++;
             echo '<p> Proszę wprowadzić poprawnie adres email.</p>';
         } else {
@@ -50,8 +58,14 @@ if (!isset($_SESSION['login'])) { // dostęp dla niezalogowanego użytkownika
         }
         if ($email !== $email2) {
             $blad++;
-           echo '<p> Podane adresy e-mail nie są ze sobą zgodne.</p>';
+           echo '<p> Podane adresy e-mail nie s± ze sob± zgodne.</p>';
         }
+		
+       // if (!$resp->is_valid) {
+       //     $error = $resp->error;
+       //     echo '<p>Proszę wpisać poprawnie wyrazy z obrazka.</p>';
+       //    $blad++;
+      //  }
  
         // jeżeli nie ma żadnego błedu, użytkownik zostaje zarejestronwany i wysłany do niego e-mail z linkiem aktywacyjnym
         if ($blad == 0) {
@@ -59,22 +73,24 @@ if (!isset($_SESSION['login'])) { // dostęp dla niezalogowanego użytkownika
             $haslo = md5($haslo); // zaszyfrowanie hasla
             $kod = uniqid(rand()); // tworzenie unikalnego kodu dla użytkownika
  
-            $wynik = mysql_query("INSERT INTO $tabela VALUES('','', '$imie', '$nazwisko', '$login', '$haslo', '$email', '$kod', NOW(),'', '')");
+            $wynik = mysql_query("INSERT INTO $tabela VALUES('', '$imie', '$nazwisko', '$login', '$haslo', '$email', '$kod', NOW(), '')");
             if ($wynik) {
-               $list = "Witaj $login !
-               Kliknij w poniższy link, aby aktywować swoje konto. http://www.spowiedz.xaa.pl/noclegownia/weryfikacja.php?weryfikacja=potwierdz&kod=$kod";
-                mail($email, "Rejestracja użytkownika", $list, "From: <biuro@spowiedz.xaa.pl>");
-                echo '<p>Dziękujemy za rejestrację! W ci±gu nabliższych 5 minut dostaniesz wiadomość e-mail z dalszymi wskazówkami rejestracji.</p>';
+                $list = "Witaj $login !
+               Kliknij w poniższy link, aby aktywować swoje konto. http://www.projekt.xaa.pl/nocleg358/weryfikacja.php?weryfikacja=potwierdz&kod=$kod";
+                mail($email, "Rejestracja użytkownika",$list);
+                echo '<p>Dziękujemy za rejestrację! W ciagu nabliższych 5 minut dostaniesz wiadomosc e-mail z dalszymi wskazówkami rejestracji.</p>';
                 mysql_close($polaczenie);
-                exit;          }
+                exit;
+            }
         }
         mysql_close($polaczenie);
     }
 
-   
+ 
+  
  
 } else {
-    header('Location: colorbox.php '); // zalogowany użytkownik zostaje przekierowany na stronę główn±
+    header('Location: / '); // zalogowany użytkownik zostaje przekierowany na stronę główn±
 }
  
 

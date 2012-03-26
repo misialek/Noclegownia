@@ -1,3 +1,3 @@
-<script type="text/javascript">
-  parent.$.fn.colorbox.close();
-</script>
+﻿<script type="text/javascript">
+parent.$.fn.colorbox.close();
+</script> 

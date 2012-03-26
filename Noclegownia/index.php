@@ -5,16 +5,12 @@ if(isset($_GET['wylo']) && $_GET['wylo']=='tak'){
 	$_SESSION = array();
 	$_SESSION['zalogowany']=0;
 	header('Location: index.php ');}
-
-if(@$_SESSION['zalogowany']==0)
-{
-    header('Location: index_.php ');
-}
+include 'db.php';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-<title>Home</title>
+<title>Strona główna</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
@@ -36,25 +32,25 @@ if(@$_SESSION['zalogowany']==0)
 	<script type="text/javascript" src="http://info.template-help.com/files/ie6_warning/ie6_script_other.js"></script>
 	<script type="text/javascript" src="js/html5.js"></script>
 <![endif]-->
-<script type="text/javascript">
-  $(document).ready(function(){
-$(".reg").colorbox({iframe:true, width:"465px", height:"470px"});
-$(".rez").colorbox({iframe:true, width:"1000", height:"600"});
-$(".zarz").colorbox({iframe:true, width:"600px", height:"520px"});
-$(".log").colorbox({iframe:true, width:"465px", height:"470px"});
-});
-</script>
+<?php
+include 'include/colorbox_class.php';
+?>
 </head>
 <body id="page1">
+<?php
+if(@$_SESSION['zalogowany']==1){
+$login = $_SESSION['login'];
+$inf=mysql_query("SELECT * FROM uzytkownik WHERE login='$login'");
+$info=mysql_fetch_assoc($inf);
+echo '<table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed; 	text-align: center;  color: #FFFFFF;background-color: #313131; width:100%;"> 
+<td><strong>Zalogowany: '.$info['imie'].' '.$info['nazwisko'].'</strong></td></table>';}
+?>
+
 <div class="extra">
 	<div class="main">
-<!-- header -->
-		<header>
+	<header>
 			<div class="wrapper">
 				<h1><a href="index.html" id="logo">Tania baza noclegowa</a></h1>
-<?php
-echo '<font size="2">Zalogowany: <b>' .$_SESSION['login']. '</b></font>';
-?>
 
 							
 				<div class="right">
@@ -65,75 +61,19 @@ echo '<font size="2">Zalogowany: <b>' .$_SESSION['login']. '</b></font>';
 							</div>
 						<!--</form>-->
 					</div>
-					<div class="wrapper">
-						<nav>
-						<ul id="top_nav">
-<li><a href="przegladaj.php?wylo=tak">Wyloguj</a></li>	
-<li><a class='rez' href="rezerwacje/uzytkownik.php">Rezerwacje</a></li>
-<li><a class='zarz' href="zarzadzanie/uzytkownik.php">Zarządzanie</a></li>
-							</ul>
-						</nav>
-					</div>	
+<?php
+include 'include/menu.php';
+?>
 				</div>
 			</div>	
 			<nav>
-				<ul id="menu">
-				<li><a href="index.php" class="nav1">Strona glowna</a></li>
-					<li><a href="my.php" class="nav2">O nas</a></li>
-                    <li><a href="przegladaj.php" class="nav3">Przeglądaj miejsca</a></li>
-					<li><a href="promocje.php" class="nav4">Promocje</a></li>
-					<li class="end"><a href="kontakt.php" class="nav5">Kontakt</a></li>
-				</ul>
+<?php
+include 'include/zakladki.php';
+?>
 			</nav>
-			<article class="col1">
-				<ul class="tabs">
-					<li><a class="active">Znajdz miejsce</a></li>
-				</ul>
-				<div class="tabs_cont">
-					<form id="form_1" action="" method="post">
-						<div class="bg">
-							<div class="wrapper">
-								<div> Typ miejsca:
-								<select name="nazwa" class="input input2">
-		<option>Hotel</option>
-		<option>Agroturystyka</option>
-		<option>Kwatera prywatna</option>
-		<option>Schronisko</option>
-		<option>Motel</option>		
-	</select>
-	</div>
-				
-<script>
-	$(function() {
-		$( "#datepicker" ).datepicker();
-			$( "#datepicker1" ).datepicker();
-	});
-	
-	
-	</script>
-
-
-<div class="wrapper">Miasto:<input type="text" class="input input2"></div>
-<div class="wrapper">Data przybycia:<input type="text" id="datepicker" class="input input2"></div>
-<div class="wrapper">Data wyjazdu:<input type="text" id="datepicker1" class="input input2"></div>
-</div><!-- End demo -->				
-							
-							<div class="wrapper">
-								<div class="radio"><input type="checkbox" name="tv">TV</div>
-                                <div class="radio"><input type="checkbox" name="logowka">Lodówka</div>
-                                <div class="radio"><input type="checkbox" name="wc">WC</div>
-                            	<div class="radio"><input type="checkbox" name="prysznic">Prysznic</div>
-                                <div class="radio"><input type="checkbox" name="wanna">Wanna</div>
-                                <div class="radio"><input type="checkbox" name="jacuzzi">Jacuzzi&nbsp;&nbsp;</div>
-                                <div class="radio end"><input type="checkbox" name="klimatyzacja">Klimatyzacja</div>
-								<div class="radio end"><input type="checkbox" name="internet">Internet</div>
-							</div>
-							<a href="#" class="button" onclick="document.getElementById('form_1').submit()">Szukaj</a>
-							<br>
-						</div>							
-					</form>
-				</div>
-			</article>
+<?php 
+include 'include/wyszukiwarka.php ';
+?>
 			<article class="col1 pad_left1">
 				<div class="text">
 					<h2>Mamy najlepsze oferty</h2>
