@@ -13,9 +13,9 @@
         <OPTION value="<?php echo $noclegownia->__get('id')?>"><?php echo $noclegownia->__get('nazwa')?> - <?php echo $noclegownia->__get('miejscowosc')?></OPTION>
       <?php endforeach;?>
    </SELECT> <br />
-    <? else: ?>
+    <?php else: ?>
       <input type="hidden" name="noclegownia" value="<?php echo $dostepneNoclegownie[0]->__get('id'); ?>"/>
-    <? endif;?>
+    <?php endif;?>
     <input type="file" name="zdjecie">Zdjecie <br />
     <input type="checkbox" name="tv" />tv <br />
     <input type="checkbox" name="lodowka" />lodowka <br />

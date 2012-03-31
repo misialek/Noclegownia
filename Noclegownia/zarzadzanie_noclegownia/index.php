@@ -1,4 +1,4 @@
-<?
+<?php
 include_once '../lib/Uzytkownik.php';
 include_once '../lib/Noclegownia.php';
 include_once '../lib/Pokoj.php';
@@ -14,7 +14,7 @@ class AdministrationActionClass{
       $this->user = Uzytkownik::doSelectOneByLogin($login);
       $typ_konta = $this->user->__get('typ_konta');
       if(!$typ_konta == Uzytkownik::ADMIN || !$typ_konta == Uzytkownik::RECEPCJONISTA){
-        header('Location: uzytkownik.php ');
+        header('Location: ../index.php ');
       }
       switch($akcja){
         case "dodajPokoj":

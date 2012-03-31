@@ -70,7 +70,7 @@
               <input type="checkbox" name="odrzuc_<?php echo $rezerwacja["rezerwacja"]->__get('id_rez');?>"  />
             </td>
           </tr>
-        <? endforeach;?>
+        <?php endforeach;?>
       </table>
     <?php endif;?>
     <?php endforeach;?>

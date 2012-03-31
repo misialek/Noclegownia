@@ -85,7 +85,7 @@
               <a href="index.php?akcja=listujPokoje&pokoj=<?php echo $pokoj->__get('id_pok')?>">Podglad pokoju</a>
             </td>
           </tr>
-        <? endforeach;?>
+        <?php endforeach;?>
       </table>
     <?php endif;?>
     <?php endforeach;?>
