@@ -1,4 +1,4 @@
-
+﻿
 article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video {display:block}
 mark, rp, rt, ruby, summary, time {display:inline}
 
@@ -17,7 +17,7 @@ body, html {height:100%}
 a {color:#f09e2f;text-decoration:underline;outline:none}
 a:hover {text-decoration:none}
 h1 {float:left;padding:17px 0 0 0}
-h2 {font-size:40px;text-transform:uppercase;font-weight:600;color:#3081c8;line-height:52px;padding:2px 0 33px 0}
+h2 {font-size:40px;text-transform:uppercase;font-weight:600;color:#3081c8;line-height:52px;padding:2px 0 24px 0}
 h3 {font-size:26px;color:#fff;color:#fff;padding-left:35px;line-height:57px;margin-bottom:30px;background:#3081c8;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;behavior:url(js/PIE.htc);position:relative;text-transform:uppercase;font-weight:600}
 p {padding-bottom:17px}
 
@@ -46,8 +46,8 @@ header {overflow:hidden;width:100%;height:494px}
 .tabs li {float:left;padding-right:1px}
 .tabs .end {padding:0}
 .tabs a {display:block;width:132px;font-size:13px;line-height:31px;color:#fff;text-transform:uppercase;text-align:center;border-radius:4px 4px 0 0;-moz-border-radius:4px 4px 0 0;-webkit-border-radius:4px 4px 0 0;behavior:url(js/PIE.htc);position:relative;background:url(../images/tabs_bg.gif) bottom repeat-x #3081c8;text-decoration:none}
-.tabs a:hover, .tabs .active {background:url(../images/bg_form.gif) repeat;width:132px;}
-.tabs_cont {border-radius:0 0 4px 4px;-moz-border-radius:0 0 4px 4px;-webkit-border-radius:0 0 4px 4px;behavior:url(js/PIE.htc);position:relative;background:url(../images/bg_form.gif) repeat;padding:30px 35px 28px}
+.tabs a:hover, .tabs .active {background:url(../images/bg_form.gif) repeat;width:267px; repeat;padding:10px 0px 0px}
+.tabs_cont {border-radius:0 0 4px 4px;-moz-border-radius:0 0 4px 4px;-webkit-border-radius:0 0 4px 4px;behavior:url(js/PIE.htc);position:relative;background:url(../images/bg_form.gif) repeat;padding:0px 35px 28px}
 .img {position:absolute;right:0px;top:203px}
 .text {padding:7px 0 0 36px;width:575px}
 .text h2 {font-size:32px;color:#323232;line-height:40px;padding:4px 0 15px 0;letter-spacing:-1px}
@@ -55,7 +55,7 @@ header {overflow:hidden;width:100%;height:494px}
 .text img {margin-top:43px}
 
 /* content */
-#content {padding-top:35px;width:100%;overflow:hidden;padding-bottom:60px}
+#content {padding-top:35px;width:100%;overflow:hidden;padding-bottom:20px}
 .pad_bot1 {padding-bottom:17px}
 .pad_bot2 {padding-bottom:7px}
 .pad_left1 {padding-left:42px}
@@ -66,8 +66,8 @@ header {overflow:hidden;width:100%;height:494px}
 .marker_2, .marker_1:hover {background:url(../images/marker_2.gif) 0 0 no-repeat}
 .marker_2:hover {background:url(../images/marker_1.gif) 0 0 no-repeat}
 .under {padding-bottom:20px;border-bottom:1px solid #cccccc;margin-bottom:20px}
-.button {display:inline-block;font-size:16px;color:#fff;background:#f09e2f;line-height:35px;padding:0 16px;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;behavior:url(js/PIE.htc);position:relative;font-weight:600;text-decoration:none;text-transform:uppercase}
-.button:hover {background:#8cbd20}
+.button2 {display:inline-block;font-size:16px;color:#fff;background:#f09e2f;line-height:35px;padding:0 16px;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;behavior:url(js/PIE.htc);position:relative;font-weight:600;text-decoration:none;text-transform:uppercase}
+.button2:hover {background:#8cbd20}
 .button1 {display:inline-block;font-size:12px;color:#fff;background:#f09e2f;line-height:20px;margin:10px 0 0 0;padding:0 12px;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;behavior:url(js/PIE.htc);position:relative;font-weight:600;text-decoration:none;text-transform:uppercase}
 .button1:hover {background:#8cbd20}
 .line1 {background:url(../images/line_ver.gif) 320px 0 repeat-y}

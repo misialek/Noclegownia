@@ -12,6 +12,7 @@ include 'db.php';
 <head>
 <title>Strona główna</title>
 <meta charset="utf-8">
+<link rel="stylesheet" href="button/stylesheets/css3buttons.css" type="text/css" />
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
@@ -70,7 +71,7 @@ include 'include/wyszukiwarka.php';
 				<div class="text">
 					<h2>Mamy najlepsze oferty</h2>
 					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
-					<a href="#" class="button">Zobacz wiecej</a>
+					<a href="przegladaj.php" class="button2">Zobacz wiecej</a>
 				</div>
 			</article>
 			<div class="img"><img src="images/img.jpg" alt=""></div>

@@ -4,13 +4,13 @@ session_start();
 	session_destroy();
 	$_SESSION = array();
 	$_SESSION['zalogowany']=0;
-	header('Location: kontakt.php ');} */
+	header('Location: przegladaj.php ');} */
 include 'db.php';
 ?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<title>Kontakt</title>
+<title>Znajdź pokój</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="button/stylesheets/css3buttons.css" type="text/css" />
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
@@ -44,7 +44,6 @@ include 'include/belka.php';
 
 <div class="extra">
 	<div class="main">
-	<header>
 			<div class="wrapper">
 				<h1><a href="index.html" id="logo">Tania baza noclegowa</a></h1>
 				<div class="right">
@@ -68,23 +67,17 @@ include 'include/zakladki.php';
 include 'include/wyszukiwarka.php';
 ?>
 			<article class="col2 pad_left1">
-				<h2>Kontakt</h2>
-				<form id="ContactForm" action="email.php" method="post">
-					<div>
-						<div class="wrapper"><input name="name" type="text" class="input" >Imie<br /></div>
-						<div class="wrapper"><input name="email" type="text" class="input" >E-mail:<br /></div>
-						<div class="wrapper"><textarea name="message" cols="1" rows="1" style="height:140px;"></textarea>Treść:<br /></div>
-						<a class="button2" onclick="document.getElementById('ContactForm').submit()"><strong onfocus="MM_popupMsg('Dziękujemy za wysłanie wiadomości e-mail.')">Wyslij</strong></a>
-						<a class="button2" onclick="document.getElementById('ContactForm').reset()"><strong>Wyczysc</strong></a>
-					</div>
-				</form>
-        	</article>
-		</header>
-        <br><br><br>
+			<h2>Znalezione pokóje</h2>
+<?php
+include 'include/wyszukiwarka_wyszukaj.php';
+?>
+			</article>
+        <section id="content"></section>
 </div>
 <?php
 include 'include/stopka.php';
 ?>
+</div>
 <script type="text/javascript"> Cufon.now(); </script>
 </body>
 </html>

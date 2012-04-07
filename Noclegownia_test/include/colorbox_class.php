@@ -26,7 +26,7 @@ $colorbox_rozmiar=(mysql_query("SELECT * FROM uzytkownik WHERE login='$login' AN
 if (mysql_num_rows($colorbox_rozmiar) == 1){ ?>
 <script type="text/javascript">
   $(document).ready(function(){
-$(".rez").colorbox({iframe:true, width:"1000", height:"610"});
+$(".rez").colorbox({iframe:true, width:"1200", height:"610"});
 $(".zarz").colorbox({iframe:true, width:"600px", height:"520px"});
  });
 </script>
