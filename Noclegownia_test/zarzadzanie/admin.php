@@ -29,7 +29,7 @@ if(@$_SESSION['zalogowany']==1)
 		<br /><br /><br /><br /><br />
 	<table style="width: 100%">
 	<tr>
-		<td class="style1" style="width: 50%">Wyświetl uśytkowników</td>
+		<td class="style1" style="width: 50%">Wyświetl użytkowników</td>
 		<td class="style1">Wyświetl noclegi</td>
 	</tr>
 	<tr>

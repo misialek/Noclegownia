@@ -12,7 +12,7 @@ if (!isset($_SESSION['login'])) { // dostęp dla niezalogowanego użytkownika
         $login = $_POST["login"];
         $haslo = $_POST["haslo"];
  
-        $haslo = md5($haslo); // szyfrowanie podanego hasła
+        //$haslo = md5($haslo); // szyfrowanie podanego hasła
  
         $wynik=mysql_query("SELECT * FROM $tabela WHERE
        login='$login' and haslo='$haslo' and status=0");
