@@ -4,4 +4,4 @@
                     <li><a href="przegladaj.php" class="nav3">Przegladaj miejsca</a></li>
 					<li><a href="promocje.php" class="nav4">Promocje</a></li> 
 					<li class="end"><a href="kontakt.php" class="nav5">Kontakt</a></li>
-				</ul>
+				</ul> 

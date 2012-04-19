@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 /*if(isset($_GET['wylo']) && $_GET['wylo']=='tak'){
 	session_destroy();

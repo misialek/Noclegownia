@@ -75,7 +75,7 @@ include 'include/wyszukiwarka.php';
 						<div class="wrapper"><input name="email" type="text" class="input" >E-mail:<br /></div>
 						<div class="wrapper"><textarea name="message" cols="1" rows="1" style="height:140px;"></textarea>Treść:<br /></div>
 						<a class="button2" onclick="document.getElementById('ContactForm').submit()"><strong onfocus="MM_popupMsg('Dziękujemy za wysłanie wiadomości e-mail.')">Wyslij</strong></a>
-						<a class="button2" onclick="document.getElementById('ContactForm').reset()"><strong>Wyczysc</strong></a>
+						<a class="button2" onclick="document.getElementById('ContactForm').reset()"><strong>Czysc</strong></a>
 					</div>
 				</form>
         	</article>

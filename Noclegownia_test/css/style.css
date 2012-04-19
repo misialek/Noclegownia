@@ -17,7 +17,7 @@ body, html {height:100%}
 a {color:#f09e2f;text-decoration:underline;outline:none}
 a:hover {text-decoration:none}
 h1 {float:left;padding:17px 0 0 0}
-h2 {font-size:40px;text-transform:uppercase;font-weight:600;color:#3081c8;line-height:52px;padding:2px 0 24px 0}
+h2 {font-size:40px;text-transform:uppercase;font-weight:600;color:#3081c8;line-height:52px;padding:2px 0 15px 0}
 h3 {font-size:26px;color:#fff;color:#fff;padding-left:35px;line-height:57px;margin-bottom:30px;background:#3081c8;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;behavior:url(js/PIE.htc);position:relative;text-transform:uppercase;font-weight:600}
 p {padding-bottom:17px}
 

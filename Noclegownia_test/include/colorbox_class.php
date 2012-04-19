@@ -37,5 +37,7 @@ $(".zarz").colorbox({iframe:true, width:"600px", height:"520px"});
 $(".zlec").colorbox({iframe:true, width:"600px", height:"400px"});
 $(".log").colorbox({iframe:true, width:"465px", height:"465px"});
 $(".reg").colorbox({iframe:true, width:"465px", height:"470px"});
+$(".spr").colorbox({iframe:true, width:"350px", height:"380px"});
+$(".kom").colorbox({iframe:true, width:"1200", height:"610"});
  });
 </script>

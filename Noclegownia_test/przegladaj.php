@@ -6,6 +6,7 @@ session_start();
 	$_SESSION['zalogowany']=0;
 	header('Location: przegladaj.php ');} */
 include 'db.php';
+$i=0;
 ?>
 <!DOCTYPE html>
 <html lang="pl">

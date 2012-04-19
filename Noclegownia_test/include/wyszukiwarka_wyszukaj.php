@@ -1,3 +1,13 @@
+ <script>
+
+    $(function(){
+        $('a.letsGo').click(function () {
+            $('div.pok'+$(this).attr("id")).toggle();
+            return false;
+        });
+    });
+
+  </script>
 <?php
 include 'db.php';
 if ($_POST["wyszukaj"]) 
@@ -34,20 +44,23 @@ $pobyt_do = mktime(0, 0, 0, $month, $day, $year);
 if(($tv == 'Brak') AND ($lodowka == 'Brak') AND ($wc == 'Brak') AND ($prysznic == 'Brak') AND ($wanna == 'Brak') AND ($jacuzzi == 'Brak') AND ($klimatyzacja == 'Brak') AND ($internet == 'Brak')){
 
 if((strlen($typ_miejsca) != 0) AND (strlen($miasto) == 0) AND (strlen($pobyt_od) == 0) AND (strlen($pobyt_do) == 0) AND ($tv == 'Brak') AND ($lodowka == 'Brak') AND ($wc == 'Brak') AND ($prysznic == 'Brak') AND ($wanna == 'Brak') AND ($jacuzzi == 'Brak') AND ($klimatyzacja == 'Brak') AND ($internet == 'Brak')){
-    $sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie
+    $sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie,
+	count(pokoj.id_miejsce) AS ile
 	FROM pokoj
 	JOIN noclegownia ON (id_miejsce = id)
 	WHERE typ='$typ_miejsca'
 	GROUP BY id";
     $query=mysql_query($sql);
-	if (mysql_num_rows($query) == 0){echo 'Przepraszamy! <br /> Pokoju o wybranych kryteriach nie posiadamy.';}
+	if (mysql_num_rows($query) == 0){echo 'Przepraszamy! <br /> Pokoju o wybranych kryteriach nie posiadamy.<br />';}
     while($result=mysql_fetch_assoc($query)){
+	$i=0;
+	$id_noclegownia=$result['id'];
 			echo '<article class="col2">
 				<div class="wrapper under">';
-				include 'include/wyszukiwarka_noclegownia.php';
+				include 'include/wyszukiwarka_noclegownia_pokaz.php';
                 echo '</div>
 				</article>';
-                        $id_noclegownia=$result['id'];
+						echo '<div style="display: none" class="pok'.$id_noclegownia.'">';
                         $sql2="SELECT * FROM pokoj WHERE id_miejsce='$id_noclegownia'";
                     	$query2=mysql_query($sql2);
                     	while($result2=mysql_fetch_assoc($query2))
@@ -56,24 +69,28 @@ if((strlen($typ_miejsca) != 0) AND (strlen($miasto) == 0) AND (strlen($pobyt_od)
 							include 'include/wyszukiwarka_pokoj.php';
 	                               	echo '</div></article>';
 	                       }
+						echo '</div>';
                                             }
 }
 
 if((strlen($typ_miejsca) != 0) AND (strlen($miasto) != 0) AND (strlen($pobyt_od) == 0) AND (strlen($pobyt_do) == 0) AND ($tv == 'Brak') AND ($lodowka == 'Brak') AND ($wc == 'Brak') AND ($prysznic == 'Brak') AND ($wanna == 'Brak') AND ($jacuzzi == 'Brak') AND ($klimatyzacja == 'Brak') AND ($internet == 'Brak')){
-    $sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie
+    $sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie,
+	count(pokoj.id_miejsce) AS ile
 	FROM pokoj
 	JOIN noclegownia ON (id_miejsce = id)
 	WHERE typ='$typ_miejsca' AND miejscowosc='$miasto'
 	GROUP BY id";
     $query=mysql_query($sql);
-	if (mysql_num_rows($query) == 0){echo 'Przepraszamy! <br /> Pokoju o wybranych kryteriach nie posiadamy.';}
+	if (mysql_num_rows($query) == 0){echo 'Przepraszamy! <br /> Pokoju o wybranych kryteriach nie posiadamy.<br />';}
     while($result=mysql_fetch_assoc($query)){
+	$i=0;
+	$id_noclegownia=$result['id'];
 			echo '<article class="col2">
 				<div class="wrapper under">';
-				include 'include/wyszukiwarka_noclegownia.php';
+				include 'include/wyszukiwarka_noclegownia_pokaz.php';
                 echo '</div>
 				</article>';
-                        $id_noclegownia=$result['id'];
+						echo '<div style="display: none" class="pok'.$id_noclegownia.'">';
                         $sql2="SELECT * FROM pokoj WHERE id_miejsce=$id_noclegownia";
                     	$query2=mysql_query($sql2);
                     	while($result2=mysql_fetch_assoc($query2))
@@ -82,45 +99,45 @@ if((strlen($typ_miejsca) != 0) AND (strlen($miasto) != 0) AND (strlen($pobyt_od)
 							include 'include/wyszukiwarka_pokoj.php';
 	                               	echo '</div></article>';
 	                       }
+						echo '</div>';
                                             }
 }
 
 if((strlen($typ_miejsca) != 0) AND (strlen($miasto) == 0) AND (strlen($pobyt_od) != 0) AND (strlen($pobyt_do) != 0) AND ($tv == 'Brak') AND ($lodowka == 'Brak') AND ($wc == 'Brak') AND ($prysznic == 'Brak') AND ($wanna == 'Brak') AND ($jacuzzi == 'Brak') AND ($klimatyzacja == 'Brak') AND ($internet == 'Brak')){
 
-	$sprawdz="SELECT * FROM rezerwacje WHERE id_rez AND
+	$sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie,
+	count(pokoj.id_miejsce) AS ile
+	FROM pokoj
+	JOIN noclegownia ON (id_miejsce = id)
+	WHERE id_pok NOT IN (SELECT id_pokoj FROM rezerwacje WHERE
 	((data_od <= '$pobyt_od'
 	AND data_do <= '$pobyt_do'
 	AND data_do >= '$pobyt_od') OR
 	(data_od >= '$pobyt_od' 
 	AND data_do >= '$pobyt_do' 
-	AND data_od <= '$pobyt_do'))";
-	$pozycja=mysql_query($sprawdz);
-	if((mysql_num_rows( $pozycja ) > 0)){
-	echo 'Nie znaleziono dostępnych pokoi o podanych kryteriach wyszukiwania.';}
-	else{
-	
-	$sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie
-	FROM pokoj
-	JOIN noclegownia ON (id_miejsce = id)
-	JOIN rezerwacje ON (id_pok = id_pokoj)
-	WHERE typ='$typ_miejsca' AND
-	((data_do > '$pobyt_od') OR
-	(data_od < '$pobyt_do'))
+	AND data_od <= '$pobyt_do'))) AND typ = '$typ_miejsca'
 	GROUP BY id";
     $query=mysql_query($sql);
-	if (mysql_num_rows($query) == 0){echo 'Przepraszamy! <br /> Pokoju o wybranych kryteriach nie posiadamy.';}
+	if (mysql_num_rows($query) == 0){
+	echo 'Przepraszamy! <br /> Pokoju o wybranych kryteriach nie posiadamy.<br />';}
     while($result=mysql_fetch_assoc($query)){
+	$i=0;
+	$id_noclegownia=$result['id'];
 			echo '<article class="col2">
 				<div class="wrapper under">';
-				include 'include/wyszukiwarka_noclegownia.php';
+				include 'include/wyszukiwarka_noclegownia_pokaz.php';
                 echo '</div>
 				</article>';
-                        $id_noclegownia=$result['id'];
-                        $sql2="SELECT pokoj.id_pok, pokoj.id_miejsce, pokoj.tytul, pokoj.opis, pokoj.cena, pokoj.tv, pokoj.lodowka, pokoj.wc, pokoj.prszynic, pokoj.wanna, pokoj.jacuzzi, pokoj.klimatyzacja, pokoj.internet, pokoj.zdjecie FROM pokoj
-						JOIN rezerwacje ON (id_pok = id_pokoj)
-						WHERE id_miejsce=$id_noclegownia AND
-						((data_do > '$pobyt_od') OR
-						(data_od < '$pobyt_do'))
+						echo '<div style="display: none" class="pok'.$id_noclegownia.'">';
+                        $sql2="SELECT pokoj.id_pok, pokoj.id_miejsce, pokoj.tytul, pokoj.opis, pokoj.cena, pokoj.tv, pokoj.lodowka, pokoj.wc, pokoj.prszynic, pokoj.wanna, pokoj.jacuzzi, pokoj.klimatyzacja, pokoj.internet, pokoj.zdjecie 
+						FROM pokoj
+						WHERE id_miejsce = $id_noclegownia AND id_pok NOT IN (SELECT id_pokoj FROM rezerwacje WHERE
+						((data_od <= '$pobyt_od'
+						AND data_do <= '$pobyt_do'
+						AND data_do >= '$pobyt_od') OR
+						(data_od >= '$pobyt_od' 
+						AND data_do >= '$pobyt_do' 
+						AND data_od <= '$pobyt_do')))
 						GROUP BY id_pok";
                     	$query2=mysql_query($sql2);
                     	while($result2=mysql_fetch_assoc($query2))
@@ -129,99 +146,100 @@ if((strlen($typ_miejsca) != 0) AND (strlen($miasto) == 0) AND (strlen($pobyt_od)
 							include 'include/wyszukiwarka_pokoj.php';
 	                               	echo '</div></article>';
 	                       }
-                                            }
-		}									
+						echo '</div>';
+                                            }									
 }
 
 if((strlen($typ_miejsca) != 0) AND (strlen($miasto) != 0) AND (strlen($pobyt_od) != 0) AND (strlen($pobyt_do) != 0) AND ($tv == 'Brak') AND ($lodowka == 'Brak') AND ($wc == 'Brak') AND ($prysznic == 'Brak') AND ($wanna == 'Brak') AND ($jacuzzi == 'Brak') AND ($klimatyzacja == 'Brak') AND ($internet == 'Brak')){
-
-	$sprawdz="SELECT * FROM rezerwacje WHERE id_rez AND 
+	
+	$sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie,
+	count(pokoj.id_miejsce) AS ile
+	FROM pokoj
+	JOIN noclegownia ON (id_miejsce = id)
+	WHERE typ='$typ_miejsca' AND miejscowosc='$miasto' AND id_pok NOT IN (SELECT id_pokoj FROM rezerwacje WHERE
 	((data_od <= '$pobyt_od'
 	AND data_do <= '$pobyt_do'
 	AND data_do >= '$pobyt_od') OR
 	(data_od >= '$pobyt_od' 
 	AND data_do >= '$pobyt_do' 
-	AND data_od <= '$pobyt_do'))";
-	$pozycja=mysql_query($sprawdz);
-	if((mysql_num_rows( $pozycja ) > 0)){
-	echo 'Nie znaleziono dostępnych pokoi o podanych kryteriach wyszukiwania.';}
-	else{
-	
-	$sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie
-	FROM pokoj
-	JOIN noclegownia ON (id_miejsce = id)
-	JOIN rezerwacje ON (id_pok = id_pokoj)
-	WHERE typ='$typ_miejsca' AND miejscowosc='$miasto' AND
-	((data_do > '$pobyt_od') OR
-	(data_od < '$pobyt_do'))
+	AND data_od <= '$pobyt_do')))
 	GROUP BY id";
     $query=mysql_query($sql);
-	if (mysql_num_rows($query) == 0){echo 'Przepraszamy! <br /> Pokoju o wybranych kryteriach nie posiadamy.';}
+	if (mysql_num_rows($query) == 0){echo 'Przepraszamy! <br /> Pokoju o wybranych kryteriach nie posiadamy.<br />';}
     while($result=mysql_fetch_assoc($query)){
+	$i=0;
+	$id_noclegownia=$result['id'];
 			echo '<article class="col2">
 				<div class="wrapper under">';
-				include 'include/wyszukiwarka_noclegownia.php';
+				include 'include/wyszukiwarka_noclegownia_pokaz.php';
                 echo '</div>
 				</article>';
-                        $id_noclegownia=$result['id'];
-                        $sql2="SELECT pokoj.id_pok, pokoj.id_miejsce, pokoj.tytul, pokoj.opis, pokoj.cena, pokoj.tv, pokoj.lodowka, pokoj.wc, pokoj.prszynic, pokoj.wanna, pokoj.jacuzzi, pokoj.klimatyzacja, pokoj.internet, pokoj.zdjecie FROM pokoj
-						JOIN rezerwacje ON (id_pok = id_pokoj)
+						echo '<div style="display: none" class="pok'.$id_noclegownia.'">';
+                        $sql2="SELECT pokoj.id_pok, pokoj.id_miejsce, pokoj.tytul, pokoj.opis, pokoj.cena, pokoj.tv, pokoj.lodowka, pokoj.wc, pokoj.prszynic, pokoj.wanna, pokoj.jacuzzi, pokoj.klimatyzacja, pokoj.internet, pokoj.zdjecie 
+						FROM pokoj
 						WHERE id_miejsce=$id_noclegownia AND
-						((data_do > '$pobyt_od') OR
-						(data_od < '$pobyt_do'))
+						id_pok NOT IN (SELECT id_pokoj FROM rezerwacje WHERE
+						((data_od <= '$pobyt_od'
+						AND data_do <= '$pobyt_do'
+						AND data_do >= '$pobyt_od') OR
+						(data_od >= '$pobyt_od' 
+						AND data_do >= '$pobyt_do' 
+						AND data_od <= '$pobyt_do')))
 						GROUP BY id_pok";
                     	$query2=mysql_query($sql2);
-                    	while($result=mysql_fetch_assoc($query2))
+                    	while($result2=mysql_fetch_assoc($query2))
                 	       {
 	                        echo'<article class="col2"><div class="wrapper under">';
 							include 'include/wyszukiwarka_pokoj.php';
 	                               	echo '</div></article>';
 	                       }
-                                            }
-		}									
+						echo '</div>';
+                                            }								
 }
+
 if(strlen($miasto) != 0){$miejscowosc=(mysql_query("SELECT miejscowosc FROM noclegownia WHERE miejscowosc='$miasto'"));
-if (mysql_num_rows($miejscowosc) == 0){echo '<br />Sprawdź nazwę miasta.';}}
+if (mysql_num_rows($miejscowosc) == 0){echo 'Sprawdź nazwę miasta.';}}
 
 }else{
 
 if((strlen($typ_miejsca) != 0) AND (strlen($miasto) == 0) AND (strlen($pobyt_od) != 0) AND (strlen($pobyt_do) != 0)){
 
-	$sprawdz="SELECT * FROM rezerwacje WHERE id_rez AND
+	$sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie,
+	count(pokoj.id_miejsce) AS ile
+	FROM pokoj
+	JOIN noclegownia ON (id_miejsce = id)
+	WHERE typ='$typ_miejsca' AND
+	tv='$tv' AND lodowka='$lodowka' AND wc='$wc' AND prszynic='$prysznic' AND wanna='$wanna' AND jacuzzi='$jacuzzi' AND klimatyzacja='$klimatyzacja' AND internet='$internet' AND
+	id_pok NOT IN (SELECT id_pokoj FROM rezerwacje WHERE
 	((data_od <= '$pobyt_od'
 	AND data_do <= '$pobyt_do'
 	AND data_do >= '$pobyt_od') OR
 	(data_od >= '$pobyt_od' 
 	AND data_do >= '$pobyt_do' 
-	AND data_od <= '$pobyt_do'))";
-	$pozycja=mysql_query($sprawdz);
-	if((mysql_num_rows( $pozycja ) > 0)){
-	echo 'Nie znaleziono dostępnych pokoi o podanych kryteriach wyszukiwania.';}
-	else{
-
-	$sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie
-	FROM pokoj
-	JOIN noclegownia ON (id_miejsce = id)
-	JOIN rezerwacje ON (id_pok = id_pokoj)
-	WHERE typ='$typ_miejsca' AND
-	tv='$tv' AND lodowka='$lodowka' AND wc='$wc' AND prszynic='$prysznic' AND wanna='$wanna' AND jacuzzi='$jacuzzi' AND klimatyzacja='$klimatyzacja' AND internet='$internet' AND
-	((data_do > '$pobyt_od') OR
-	(data_od < '$pobyt_do'))
+	AND data_od <= '$pobyt_do')))
 	GROUP BY id";
     $query=mysql_query($sql);
-	if (mysql_num_rows($query) == 0){echo 'Przepraszamy! <br /> Pokoju o wybranych kryteriach nie posiadamy.';}
+	if (mysql_num_rows($query) == 0){echo 'Przepraszamy! <br /> Pokoju o wybranych kryteriach nie posiadamy.<br />';}
     while($result=mysql_fetch_assoc($query)){
+	$i=0;
+	$id_noclegownia=$result['id'];
 			echo '<article class="col2">
 				<div class="wrapper under">';
-				include 'include/wyszukiwarka_noclegownia.php';
+				include 'include/wyszukiwarka_noclegownia_pokaz.php';
                 echo '</div>
 				</article>';
-                        $id_noclegownia=$result['id'];
-                        $sql2="SELECT pokoj.id_pok, pokoj.id_miejsce, pokoj.tytul, pokoj.opis, pokoj.cena, pokoj.tv, pokoj.lodowka, pokoj.wc, pokoj.prszynic, pokoj.wanna, pokoj.jacuzzi, pokoj.klimatyzacja, pokoj.internet, pokoj.zdjecie FROM pokoj
-						JOIN rezerwacje ON (id_pok = id_pokoj)
+						echo '<div style="display: none" class="pok'.$id_noclegownia.'">';
+                        $sql2="SELECT pokoj.id_pok, pokoj.id_miejsce, pokoj.tytul, pokoj.opis, pokoj.cena, pokoj.tv, pokoj.lodowka, pokoj.wc, pokoj.prszynic, pokoj.wanna, pokoj.jacuzzi, pokoj.klimatyzacja, pokoj.internet, pokoj.zdjecie 
+						FROM pokoj
 						WHERE id_miejsce=$id_noclegownia AND
-						((data_do > '$pobyt_od') OR
-						(data_od < '$pobyt_do'))
+						tv='$tv' AND lodowka='$lodowka' AND wc='$wc' AND prszynic='$prysznic' AND wanna='$wanna' AND jacuzzi='$jacuzzi' AND klimatyzacja='$klimatyzacja' AND internet='$internet' AND
+						id_pok NOT IN (SELECT id_pokoj FROM rezerwacje WHERE
+						((data_od <= '$pobyt_od'
+						AND data_do <= '$pobyt_do'
+						AND data_do >= '$pobyt_od') OR
+						(data_od >= '$pobyt_od' 
+						AND data_do >= '$pobyt_do' 
+						AND data_od <= '$pobyt_do')))
 						GROUP BY id_pok";
                     	$query2=mysql_query($sql2);
                     	while($result2=mysql_fetch_assoc($query2))
@@ -230,47 +248,47 @@ if((strlen($typ_miejsca) != 0) AND (strlen($miasto) == 0) AND (strlen($pobyt_od)
 							include 'include/wyszukiwarka_pokoj.php';
 	                               	echo '</div></article>';
 	                       }
-                                            }
-		}									
+						echo '</div>';
+                                            }								
 }
 
 if((strlen($typ_miejsca) != 0) AND (strlen($miasto) != 0) AND (strlen($pobyt_od) != 0) AND (strlen($pobyt_do) != 0)){
-
-	$sprawdz="SELECT * FROM rezerwacje WHERE id_rez AND
+	
+	$sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie,
+	count(pokoj.id_miejsce) AS ile
+	FROM pokoj
+	JOIN noclegownia ON (id_miejsce = id)
+	WHERE typ='$typ_miejsca' AND miejscowosc='$miasto' AND
+	tv='$tv' AND lodowka='$lodowka' AND wc='$wc' AND prszynic='$prysznic' AND wanna='$wanna' AND jacuzzi='$jacuzzi' AND klimatyzacja='$klimatyzacja' AND internet='$internet' AND
+	id_pok NOT IN (SELECT id_pokoj FROM rezerwacje WHERE
 	((data_od <= '$pobyt_od'
 	AND data_do <= '$pobyt_do'
 	AND data_do >= '$pobyt_od') OR
 	(data_od >= '$pobyt_od' 
 	AND data_do >= '$pobyt_do' 
-	AND data_od <= '$pobyt_do'))";
-	$pozycja=mysql_query($sprawdz);
-	if((mysql_num_rows( $pozycja ) > 0)){
-	echo 'Nie znaleziono dostępnych pokoi o podanych kryteriach wyszukiwania.';}
-	else{
-	
-	$sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie
-	FROM pokoj
-	JOIN noclegownia ON (id_miejsce = id)
-	JOIN rezerwacje ON (id_pok = id_pokoj)
-	WHERE typ='$typ_miejsca' AND miejscowosc='$miasto' AND
-	tv='$tv' AND lodowka='$lodowka' AND wc='$wc' AND prszynic='$prysznic' AND wanna='$wanna' AND jacuzzi='$jacuzzi' AND klimatyzacja='$klimatyzacja' AND internet='$internet' AND
-	((data_do > '$pobyt_od') OR
-	(data_od < '$pobyt_do'))
+	AND data_od <= '$pobyt_do')))
 	GROUP BY id";
     $query=mysql_query($sql);
-	if (mysql_num_rows($query) == 0){echo 'Przepraszamy! <br /> Pokoju o wybranych kryteriach nie posiadamy.';}
+	if (mysql_num_rows($query) == 0){echo 'Przepraszamy! <br /> Pokoju o wybranych kryteriach nie posiadamy.<br />';}
     while($result=mysql_fetch_assoc($query)){
+	$i=0;
+	$id_noclegownia=$result['id'];
 			echo '<article class="col2">
 				<div class="wrapper under">';
-				include 'include/wyszukiwarka_noclegownia.php';
+				include 'include/wyszukiwarka_noclegownia_pokaz.php';
                 echo '</div>
 				</article>';
-                        $id_noclegownia=$result['id'];
+						echo '<div style="display: none" class="pok'.$id_noclegownia.'">';
                         $sql2="SELECT pokoj.id_pok, pokoj.id_miejsce, pokoj.tytul, pokoj.opis, pokoj.cena, pokoj.tv, pokoj.lodowka, pokoj.wc, pokoj.prszynic, pokoj.wanna, pokoj.jacuzzi, pokoj.klimatyzacja, pokoj.internet, pokoj.zdjecie FROM pokoj
-						JOIN rezerwacje ON (id_pok = id_pokoj)
 						WHERE id_miejsce=$id_noclegownia AND
-						((data_do > '$pobyt_od') OR
-						(data_od < '$pobyt_do'))
+						tv='$tv' AND lodowka='$lodowka' AND wc='$wc' AND prszynic='$prysznic' AND wanna='$wanna' AND jacuzzi='$jacuzzi' AND klimatyzacja='$klimatyzacja' AND internet='$internet' AND
+						id_pok NOT IN (SELECT id_pokoj FROM rezerwacje WHERE
+						((data_od <= '$pobyt_od'
+						AND data_do <= '$pobyt_do'
+						AND data_do >= '$pobyt_od') OR
+						(data_od >= '$pobyt_od' 
+						AND data_do >= '$pobyt_do' 
+						AND data_od <= '$pobyt_do')))
 						GROUP BY id_pok";
                     	$query2=mysql_query($sql2);
                     	while($result2=mysql_fetch_assoc($query2))
@@ -279,29 +297,34 @@ if((strlen($typ_miejsca) != 0) AND (strlen($miasto) != 0) AND (strlen($pobyt_od)
 							include 'include/wyszukiwarka_pokoj.php';
 	                               	echo '</div></article>';
 	                       }
+						echo '</div>';
                                             }
-		}									
 }
+
 if(strlen($miasto) != 0){$miejscowosc=(mysql_query("SELECT miejscowosc FROM noclegownia WHERE miejscowosc='$miasto'"));
-if(mysql_num_rows($miejscowosc) == 0){echo '<br />Sprawdź nazwę miasta.';}}
+if(mysql_num_rows($miejscowosc) == 0){echo 'Sprawdź nazwę miasta.';}}
 
 if((strlen($typ_miejsca) != 0) AND (strlen($miasto) == 0) AND (strlen($pobyt_od) == 0) AND (strlen($pobyt_do) == 0)){
-    $sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie
+    $sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie,
+	count(pokoj.id_miejsce) AS ile
 	FROM pokoj
 	JOIN noclegownia ON (id_miejsce = id)
 	WHERE typ='$typ_miejsca' AND
 	tv='$tv' AND lodowka='$lodowka' AND wc='$wc' AND prszynic='$prysznic' AND wanna='$wanna' AND jacuzzi='$jacuzzi' AND klimatyzacja='$klimatyzacja' AND internet='$internet'
 	GROUP BY id";
     $query=mysql_query($sql);
-	if (mysql_num_rows($query) == 0){echo 'Przepraszamy! <br /> Pokoju o wybranych kryteriach nie posiadamy.';}
+	if (mysql_num_rows($query) == 0){echo 'Przepraszamy! <br /> Pokoju o wybranych kryteriach nie posiadamy.<br />';}
     while($result=mysql_fetch_assoc($query)){
+	$i=0;
+	$id_noclegownia=$result['id'];
 			echo '<article class="col2">
 				<div class="wrapper under">';
-				include 'include/wyszukiwarka_noclegownia.php';
+				include 'include/wyszukiwarka_noclegownia_pokaz.php';
                 echo '</div>
 				</article>';
-                        $id_noclegownia=$result['id'];
-                        $sql2="SELECT * FROM pokoj WHERE id_miejsce=$id_noclegownia";
+						echo '<div style="display: none" class="pok'.$id_noclegownia.'">';
+                        $sql2="SELECT * FROM pokoj WHERE id_miejsce=$id_noclegownia AND
+						tv='$tv' AND lodowka='$lodowka' AND wc='$wc' AND prszynic='$prysznic' AND wanna='$wanna' AND jacuzzi='$jacuzzi' AND klimatyzacja='$klimatyzacja' AND internet='$internet'";
                     	$query2=mysql_query($sql2);
                     	while($result2=mysql_fetch_assoc($query2))
                 	       {
@@ -309,6 +332,7 @@ if((strlen($typ_miejsca) != 0) AND (strlen($miasto) == 0) AND (strlen($pobyt_od)
 							include 'include/wyszukiwarka_pokoj.php';
 	                               	echo '</div></article>';
 	                       }
+						echo '</div>';
                                             }
 }
 
