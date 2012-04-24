@@ -4,7 +4,7 @@ include_once '../lib/Noclegownia.php';
 include_once '../lib/Pokoj.php';
 include_once '../lib/Rezerwacja.php';
 session_start();
-$_SESSION['login'] = 'misialek';
+//$_SESSION['login'] = 'misialek'; DEBUG LOGIN
 $admin = new AdministrationActionClass();
 $admin->init($_SESSION['login'], isset($_GET['akcja'])?$_GET['akcja']:"");
 
