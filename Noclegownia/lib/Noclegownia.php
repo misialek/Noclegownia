@@ -2,7 +2,6 @@
 include_once '../db.php';
 include_once '../lib/Uzytkownik.php';
 class Noclegownia{
-  private $zdjecie;
   private $id;
   private $nazwa;
   private $miejscowosc;
@@ -12,12 +11,12 @@ class Noclegownia{
   private $ocena;
   private $typ;
   private $status;
-  const WSZYSTKIE_KOLUMNY = "noclegownia.zdjecie, noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status";
+  private $zdjecie;
+  const WSZYSTKIE_KOLUMNY = "noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie";
 
   function __construct(){
     $args = func_get_args();
     if(count($args) == 1 && is_array($args)){
-      $this->zdjecie = $args[0]['zdjecie'];
       $this->id = $args[0]['id'];
       $this->nazwa = $args[0]['nazwa'];
       $this->miejscowosc = $args[0]['miejscowosc'];
@@ -27,17 +26,18 @@ class Noclegownia{
       $this->ocena = $args[0]['ocena'];
       $this->typ  = $args[0]['typ'];
       $this->status = $args[0]['status'];
+      $this->zdjecie = $args[0]['zdjecie'];
     } else{
-      $this->zdjecie = $args[0];
-      $this->id = $args[1];
-      $this->nazwa = $args[2];
-      $this->miejscowosc = $args[3];
-      $this->kod_pocztowy = $args[4];
-      $this->ulica = $args[5];
-      $this->opis = $args[6];
-      $this->ocena = $args[7];
-      $this->typ  = $args[8];
-      $this->status = $args[9];
+      $this->id = $args[0];
+      $this->nazwa = $args[1];
+      $this->miejscowosc = $args[2];
+      $this->kod_pocztowy = $args[3];
+      $this->ulica = $args[4];
+      $this->opis = $args[5];
+      $this->ocena = $args[6];
+      $this->typ  = $args[7];
+      $this->status = $args[8];
+      $this->zdjecie = $args[9];
     }
   }
   public function __set($key,$val) {
@@ -62,7 +62,7 @@ class Noclegownia{
     } else if($userType == Uzytkownik::ADMIN){
       $query = sprintf("SELECT " . self::WSZYSTKIE_KOLUMNY . " FROM noclegownia");
     } else {
-      return array();
+      throw new Exception("Uzytkownik nie ma dostepu");
     }
 
     $result = mysql_query($query,$polaczenie);

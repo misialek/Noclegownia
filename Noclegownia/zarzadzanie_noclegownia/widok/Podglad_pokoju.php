@@ -9,6 +9,9 @@
     <input type="hidden" name="lista_pokoi" />
       Pokój o numerze: <?php echo $pokoj->__get('id_pok');?><br/>
       Znajdujący się w noclegowni: <?php echo $nocleg->__get('nazwa') . ", " . $nocleg->__get('miejscowosc'); ?><br/>
+      Tytul pokoju: <input name="tytul_<?php echo $pokoj->__get('id_pok');?>" value="<?php echo ($pokoj->__get('tytul'));?>"/><br/>
+      Cena pokoju: <input name="cena_<?php echo $pokoj->__get('id_pok');?>" value="<?php echo ($pokoj->__get('cena'));?>"/><br/>
+      Opis pokoju: <textarea name="opis_<?php echo $pokoj->__get('id_pok');?>"><?php echo ($pokoj->__get('opis'));?></textarea><br/>
       Pokoj posiada tv: <input type="checkbox" name="tv_<?php echo $pokoj->__get('id_pok');?>" <?php echo ($pokoj->__get('tv')?"checked":"");?>/><br/>
       Pokoj posiada lodowkę: <input type="checkbox" name="lodowka_<?php echo $pokoj->__get('id_pok');?>"  <?php echo ($pokoj->__get('lodowka')?"checked":"");?>/><br/>
       Pokoj posiada wc: <input type="checkbox" name="wc_<?php echo $pokoj->__get('id_pok');?>"  <?php echo ($pokoj->__get('wc')?"checked":"");?>/><br/>
