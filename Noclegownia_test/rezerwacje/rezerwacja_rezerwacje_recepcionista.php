@@ -14,9 +14,9 @@ $id_rezerwacji=($_GET['id_rez']);
 <meta charset="utf-8">
 </head>
 <body>
-<input type="button" value="Wstecz" onclick="location.href = 'rezerwacja_zm.php?zmien=<?php echo $id_rezerwacji ?>&id_pok=<?php echo $id_pokoj ?>';" />
+<input type="button" value="Wstecz" onclick="location.href = 'rezerwacja_zm_recepcionista.php?zmien=<?php echo $id_rezerwacji ?>&id_pok=<?php echo $id_pokoj ?>';" />
 <?php
-echo '<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+echo '<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <center><strong><span style="color: black; font-size: 12pt">';
 $daty=mysql_query("SELECT * FROM rezerwacje WHERE id_pokoj='$id_pokoj' ORDER BY data_od");
 while($data=mysql_fetch_assoc($daty)){

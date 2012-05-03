@@ -16,8 +16,8 @@ $colorbox_rozmiar=(mysql_query("SELECT * FROM uzytkownik WHERE login='$login' AN
 if (mysql_num_rows($colorbox_rozmiar) == 1){ ?>
 <script type="text/javascript">
   $(document).ready(function(){
-$(".rez").colorbox({iframe:true, width:"700px", height:"450px"});
-$(".zarz").colorbox({iframe:true, width:"620px", height:"450px"});
+$(".rez").colorbox({iframe:true, width:"1060", height:"600"});
+$(".zarz").colorbox({iframe:true, width:"960", height:"580"});
  });
 </script>
 <?php }
@@ -38,6 +38,5 @@ $(".zlec").colorbox({iframe:true, width:"600px", height:"400px"});
 $(".log").colorbox({iframe:true, width:"465px", height:"465px"});
 $(".reg").colorbox({iframe:true, width:"465px", height:"470px"});
 $(".spr").colorbox({iframe:true, width:"350px", height:"380px"});
-$(".kom").colorbox({iframe:true, width:"1200", height:"610"});
  });
 </script>

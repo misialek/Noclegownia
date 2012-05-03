@@ -3,20 +3,43 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title></title>
+	<style type="text/css">
+body {font:10px Arial, Helvetica, sans-serif; text-align: center; font-size:10px;}
+th, td {
+font-size:14px;
+padding: 2px 6px 2px 6px;}
+th {
+background: #FFF3C9; 
+color: #414632
+}
+td {
+text-align: center; 
+background: #F4FFE0
+}
+table {
+background: #D0C6A4 
+}
+</style>
   </head>
   <body>
     <form method="post">
     <input type="hidden" name="lista_pokoi" />
+	<div style='text-align:left;'>
+	<input type="button" value="Wstecz" onclick="location.href = '../zarzadzanie/uzytkownik.php';" />
+	</div>
     <?php foreach($dostepneNoclegownie as $noclegownia): ?>
-    <h2><?php echo $noclegownia->__get('nazwa') . ", " . $noclegownia->__get('miejscowosc'); ?></h2>
+    <h2><?php echo $noclegownia->__get('nazwa') . " - ul. " . $noclegownia->__get('ulica') . ", " . $noclegownia->__get('kod_pocztowy') . " " . $noclegownia->__get('miejscowosc'); ?></h2>
      <?php $noclegowniaId = $noclegownia->__get('id'); ?>
      <?php if(!isset($dostepnePokoje[$noclegowniaId])): ?>
-      <br/>Wybrane miejsce nie ma dostepnych pokoi, <a href="index.php?akcja=dodajPokoj">dodaj jeden</a>
+      <span style="font-size:12px;">Wybrane miejsce nie ma dostepnych pokoi. </span><input type="button" value="Dodaj pokój" onclick="location.href = 'index.php?akcja=dodajPokoj';" /><br /><br />
      <?php else: ?>
-      <table>
+      <table align="center">
         <tr>
           <th>
             Id
+          </th>
+          <th>
+            Tytul
           </th>
           <th>
             Tv
@@ -43,16 +66,18 @@
             Internet
           </th>
           <th>
-            <span style="color:red;">Delete</span>
+            <span style="color:red;">Usuń</span>
           </th>
           <th>
-            Podglad pokoju
           </th>
         </tr>
         <?php foreach($dostepnePokoje[$noclegowniaId] as $pokoj): ?>
          <tr>
             <td>
              <?php echo $pokoj->__get('id_pok');?>
+            </td>
+            <td>
+              <input type="text" name="tytul_<?php echo $pokoj->__get('id_pok');?>" value="<?php echo ($pokoj->__get('tytul'));?>"/>
             </td>
             <td>
               <input type="checkbox" name="tv_<?php echo $pokoj->__get('id_pok');?>" <?php echo ($pokoj->__get('tv')?"checked":"");?>/>
@@ -82,10 +107,10 @@
               <input type="checkbox" name="delete_<?php echo $pokoj->__get('id_pok');?>"/>
             </td>
             <td>
-              <a href="index.php?akcja=listujPokoje&pokoj=<?php echo $pokoj->__get('id_pok')?>">Podglad pokoju</a>
+            <input type="button" value="Podglad pokoju" onclick="location.href = 'index.php?akcja=listujPokoje&pokoj=<?php echo $pokoj->__get('id_pok')?>';" />
             </td>
           </tr>
-        <? endforeach;?>
+        <?php endforeach;?>
       </table>
     <?php endif;?>
     <?php endforeach;?>

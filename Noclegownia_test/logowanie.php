@@ -5,7 +5,9 @@
      <form action="log.php" method="post">
     <input type="hidden" name="wyslane" value="TRUE" />
     Login: <br><input type="text" name="login" /><br><br>
-    Hasło: <br><input type="password" name="haslo" /><br /><br />
-    <input type="submit" value="zaloguj" /><br>
-    </form>
+    Hasło: <br><input type="password" name="haslo" /><br />
+	<br />
+    <input type="submit" value="Zaloguj" /><br>
+    </form><br />
+	<a href="przyp_haslo.php"><span style="font-size: 8pt;">Przypomnij hasło</span></a>
 </center>

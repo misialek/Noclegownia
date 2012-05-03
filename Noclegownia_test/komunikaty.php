@@ -4,13 +4,13 @@ session_start();
 	session_destroy();
 	$_SESSION = array();
 	$_SESSION['zalogowany']=0;
-	header('Location: promocje.php ');} */
+	header('Location: komunikaty.php ');} */
 include 'db.php';
 ?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<title>Promocje</title>
+<title>Komunikaty</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="button/stylesheets/css3buttons.css" type="text/css" />
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
@@ -36,7 +36,6 @@ include 'db.php';
 <?php
 include 'include/colorbox_class.php';
 ?>
-	</script>
 </head>
 <body id="page1">
 <?php
@@ -68,9 +67,9 @@ include 'include/zakladki.php';
 include 'include/wyszukiwarka.php';
 ?>
 			<article class="col2 pad_left1">
-			<h2>Promocje</h2>
+			<h2>Komunikaty</h2>
 <?php
-include 'promocje_pokoje.php';
+include 'include/rezerwacja_aktywacja.php';
 ?>
 			</article>
         <section id="content"></section>

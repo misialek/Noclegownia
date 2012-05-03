@@ -34,14 +34,14 @@ $id_pokoj=($_GET['id_pok']);
 	
 	</script>
 <input type="button" value="Wstecz" onclick="location.href = 'uzytkownik.php';" />
-<input type="button" value="Sprawdź zarezerwowane terminy" onclick="location.href = 'rezerwacja_rezerwacje.php?id_rez=<?php echo $id_rezerwacji ?>&id_pok=<?php echo $id_pokoj ?>';" />
+<input type="button" value="Sprawdź zarezerwowane terminy" onclick="location.href = 'rezerwacja_rezerwacje_recepcionista.php?id_rez=<?php echo $id_rezerwacji ?>&id_pok=<?php echo $id_pokoj ?>';" />
 <br />
 <?php
 $daty=mysql_query("SELECT * FROM rezerwacje WHERE id_rez='$id_rezerwacji'");
 $data=mysql_fetch_assoc($daty);
 echo '<br /><br /><br /><br /><br /><br /><br /><center><b><h1>Przesuń termin rezerwacji<br /></h1></b><br /><br />
 <table id="regi" style="color:#000;margin:0 0 0 30px" border="0">
-    <form action="rezerwacja_zmien.php" method="post">
+    <form action="rezerwacja_zmien_recepcionista.php" method="post">
 	<input type="hidden" name="zmien" value="TRUE" />
 	<input type="hidden" name="id_rez" value="'.$id_rezerwacji.'" />
 	<input type="hidden" name="id_pok" value="'.$id_pokoj.'" />

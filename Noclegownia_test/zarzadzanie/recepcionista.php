@@ -24,17 +24,30 @@ if(@$_SESSION['zalogowany']==1)
 </head>
 
 <body>
+<script type="text/javascript">
+function confDel( url )
+{
+   if( confirm( 'Czy na pewno chcesz usunąć konto?') )
+   {
+      window.top.location.href = url;
+   }
+}
+</script>
 
      <b><h1 class="style1">Zarządzanie </b>kontem - Recepcjonista</h1>
 		<br /><br /><br /><br /><br />
 	<table style="width: 100%">
 	<tr>
-		<td class="style1" style="width: 50%">Wyświetl pokoje</td>
-		<td class="style1">Dodaj pokój</td>
+		<td class="style1" style="width: 50%">Dodaj pokój</td>
+		<td class="style1">Wyświetl pokoje</td>
 	</tr>
 	<tr>
-		<td class="style1" style="width: 50%"><button>Wyświetl</button></td>
-		<td class="style1"><button>Dodaj</button></td>
+		<td class="style1" style="width: 50%"><a href="../zarzadzanie_noclegownia/index.php?akcja=dodajPokoj"><button>Dodaj</button></a></td>
+		<td class="style1"><a href="../zarzadzanie_noclegownia/index.php?akcja=listujPokoje"><button>Wyświetl</button></a></td>
+	</tr>
+	<tr>
+		<td class="style1" style="width: 50%">&nbsp;</td>
+		<td class="style1">&nbsp;</td>
 	</tr>
 	<tr>
 		<td class="style1" style="width: 50%">&nbsp;</td>
@@ -42,11 +55,27 @@ if(@$_SESSION['zalogowany']==1)
 	</tr>
 	<tr>
 		<td class="style1" style="width: 50%">Edytyj profil noclegowni</td>
-		<td class="style1">itd.</td>
+		<td class="style1">Zmień dane osobowe</td>
 	</tr>
 	<tr>
 		<td class="style1" style="width: 50%"><button>Edytuj</button></td>
+		<td class="style1"><a href="rezepcionista_zmien_da.php"><button>Zmień</button></a></td>
+	</tr>
+	<tr>
+		<td class="style1" style="width: 50%">&nbsp;</td>
 		<td class="style1">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="style1" style="width: 50%">&nbsp;</td>
+		<td class="style1">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="style1" style="width: 50%">Zmień hasło</td>
+		<td class="style1">Usuń konto</td>
+	</tr>
+	<tr>
+		<td class="style1" style="width: 50%"><a href="rezepcionista_has.php"><button>Zmień</button></a></td>
+		<td class="style1"><a href="" onclick="confDel('uzytkownik_usun.php');"><button>Usuń</button></a></td>
 	</tr>
 	</table>
 

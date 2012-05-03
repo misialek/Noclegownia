@@ -5,6 +5,7 @@
     <title></title>
   </head>
   <body>
-    Wybrany pokoj nie istnieje.
+  	 <br/><br/><br/><br/><br/><br/><br /><br/><br /><br/><br /><br/>
+     <strong>Wybrany pokoj nie istnieje.</strong>
   </body>
 </html>

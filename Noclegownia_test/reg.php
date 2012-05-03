@@ -1,5 +1,5 @@
-﻿<?php ob_start(); 
-
+﻿<?php ob_start();
+include 'include/mail_to.php';
 session_start(); // rozpoczęcie sesji
  
 if (!isset($_SESSION['login'])) { // dostęp dla niezalogowanego użytkownika
@@ -63,12 +63,10 @@ if (!isset($_SESSION['login'])) { // dostęp dla niezalogowanego użytkownika
             if ($wynik) {
                $list = "Witaj $login !
                Kliknij w poniższy link, aby aktywować swoje konto. http://www.spowiedz.xaa.pl/noclegownia/weryfikacja.php?weryfikacja=potwierdz&kod=$kod";
-                mail($email, "Rejestracja użytkownika", $list, "From: <biuro@spowiedz.xaa.pl>");
+                mail($email, "Rejestracja użytkownika", $list, $mail_to);
                 echo '<p>Dziękujemy za rejestrację! W ci±gu nabliższych 5 minut dostaniesz wiadomość e-mail z dalszymi wskazówkami rejestracji.</p>';
-                mysql_close($polaczenie);
                 exit;          }
         }
-        mysql_close($polaczenie);
     }
 
    
