@@ -19,6 +19,9 @@
             Id
           </th>
           <th>
+            Tytul
+          </th>
+          <th>
             Tv
           </th>
           <th>
@@ -53,6 +56,9 @@
          <tr>
             <td>
              <?php echo $pokoj->__get('id_pok');?>
+            </td>
+            <td>
+              <input type="text" name="tytul_<?php echo $pokoj->__get('id_pok');?>" value="<?php echo ($pokoj->__get('tytul'));?>"/>
             </td>
             <td>
               <input type="checkbox" name="tv_<?php echo $pokoj->__get('id_pok');?>" <?php echo ($pokoj->__get('tv')?"checked":"");?>/>

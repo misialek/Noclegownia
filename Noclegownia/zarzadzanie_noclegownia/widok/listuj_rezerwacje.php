@@ -25,6 +25,9 @@
             Id pokoju
           </th>
           <th>
+            Nazwa pokoju
+          </th>
+          <th>
             Dane rezerwującego
           </th>
           <th>
@@ -52,13 +55,16 @@
                <?php echo $rezerwacja["rezerwacja"]->__get('id_pokoj');?>
             </td>
             <td>
+               <?php echo $rezerwacja["pokoj"];?>
+            </td>
+            <td>
               <?php echo $rezerwacja["nazwa_klienta"];?>
             </td>
             <td>
-              <?php echo $rezerwacja["rezerwacja"]->__get('data_od');?>
+              <?php echo date("d-m-y", $rezerwacja["rezerwacja"]->__get('data_od'));?>
             </td>
             <td>
-              <?php echo $rezerwacja["rezerwacja"]->__get('data_do');?>
+              <?php echo date("d-m-y", $rezerwacja["rezerwacja"]->__get('data_do'));?>
             </td>
             <td>
               <?php echo $rezerwacja["rezerwacja"]->__get('wartosc');?>

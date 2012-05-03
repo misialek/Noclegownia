@@ -4,9 +4,9 @@ include_once "../db.php";
 class Uzytkownik{
   private $id;
   private $typ_konta;
-    const UZYTKOWNIK = 0;
-    const RECEPCJONISTA = 1;
-    const ADMIN = 2;
+    const UZYTKOWNIK = 30;
+    const RECEPCJONISTA = 20;
+    const ADMIN = 10;
   private $imie;
   private $nazwisko;
   private $login;

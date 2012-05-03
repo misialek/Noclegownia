@@ -4,6 +4,7 @@ include_once '../lib/Noclegownia.php';
 include_once '../lib/Pokoj.php';
 include_once '../lib/Rezerwacja.php';
 session_start();
+//$_SESSION['login'] = 'misialek'; DEBUG LOGIN
 $admin = new AdministrationActionClass();
 $admin->init($_SESSION['login'], isset($_GET['akcja'])?$_GET['akcja']:"");
 
@@ -14,7 +15,7 @@ class AdministrationActionClass{
       $this->user = Uzytkownik::doSelectOneByLogin($login);
       $typ_konta = $this->user->__get('typ_konta');
       if(!$typ_konta == Uzytkownik::ADMIN || !$typ_konta == Uzytkownik::RECEPCJONISTA){
-        header('Location: ../index.php ');
+        header('Location: uzytkownik.php ');
       }
       switch($akcja){
         case "dodajPokoj":
@@ -113,9 +114,10 @@ class AdministrationActionClass{
   }
 
   private function stworzNowyPokoj($dostepneNoclegownie){
-      $isFileUploaded = isset($_FILES['zdjecie']['tmp_name']) && $_FILES['zdjecie']['tmp_name'] != "";
-      $isFileUploaded = $isFileUploaded?in_array($_FILES['zdjecie']['type'], array('image/jpeg', 'image/png', 'image/gif')):false;
-      $zdjecie = $isFileUploaded?file_get_contents($_FILES['zdjecie']['tmp_name']):"";
+      $idNoclegownia = isset($_POST['noclegownia'])?$_POST['noclegownia']:NULL;
+      $tytul = isset($_POST['tytul'])?$_POST['tytul']:"";
+      $opis = isset($_POST['opis'])?$_POST['opis']:"";
+      $cena = isset($_POST['cena'])?$_POST['cena']:0;
       $tv = isset($_POST['tv'])?1:0;
       $lodowka = isset($_POST['lodowka'])?1:0;
       $wc = isset($_POST['wc'])?1:0;
@@ -124,10 +126,13 @@ class AdministrationActionClass{
       $jacuzzi = isset($_POST['jacuzzi'])?1:0;
       $klimatyzacja = isset($_POST['klimatyzacja'])?1:0;
       $internet = isset($_POST['internet'])?1:0;
-      $idNoclegownia = isset($_POST['noclegownia'])?$_POST['noclegownia']:NULL;
+
+      $isFileUploaded = isset($_FILES['zdjecie']['tmp_name']) && $_FILES['zdjecie']['tmp_name'] != "";
+      $isFileUploaded = $isFileUploaded?in_array($_FILES['zdjecie']['type'], array('image/jpeg', 'image/png', 'image/gif')):false;
+      $zdjecie = $isFileUploaded?file_get_contents($_FILES['zdjecie']['tmp_name']):"";
 
       $this->sprawdzDostepUseraDoNoclegowni($dostepneNoclegownie, $idNoclegownia);
-      $nowyPokoj = new Pokoj($zdjecie, '', $idNoclegownia, $tv, $lodowka, $wc, $prszynic, $wanna, $jacuzzi, $klimatyzacja, $internet, '');
+      $nowyPokoj = new Pokoj('', $idNoclegownia, $tytul, $opis, $cena, $tv, $lodowka, $wc, $prszynic, $wanna, $jacuzzi, $klimatyzacja, $internet, $zdjecie);
       $nowyPokoj->zapiszNowyPokoj();
   }
 
@@ -165,6 +170,21 @@ class AdministrationActionClass{
   }
 
   private function zmienUstawieniaPokojuWZaleznosciOdZapostowanychDanych($pokoj){
+      if(isset($_POST["tytul_".$pokoj->__get('id_pok')])){
+        $pokoj->__set('tytul', $_POST["tytul_".$pokoj->__get('id_pok')]);
+      } else {
+        $pokoj->__set('tytul', NULL);
+      }
+      if(isset($_POST["opis_".$pokoj->__get('id_pok')])){
+        $pokoj->__set('opis', $_POST["opis_".$pokoj->__get('id_pok')]);
+      } else {
+        $pokoj->__set('opis', NULL);
+      }
+      if(isset($_POST["cena_".$pokoj->__get('id_pok')])){
+        $pokoj->__set('cena', $_POST["cena_".$pokoj->__get('id_pok')]);
+      } else {
+        $pokoj->__set('cena', NULL);
+      }
       if(isset($_POST["tv_".$pokoj->__get('id_pok')])){
         $pokoj->__set('tv', 1);
       } else {

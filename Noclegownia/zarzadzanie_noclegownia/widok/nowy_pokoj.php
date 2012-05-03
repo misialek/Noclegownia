@@ -13,10 +13,13 @@
         <OPTION value="<?php echo $noclegownia->__get('id')?>"><?php echo $noclegownia->__get('nazwa')?> - <?php echo $noclegownia->__get('miejscowosc')?></OPTION>
       <?php endforeach;?>
    </SELECT> <br />
-    <?php else: ?>
+    <?php  else: ?>
       <input type="hidden" name="noclegownia" value="<?php echo $dostepneNoclegownie[0]->__get('id'); ?>"/>
     <?php endif;?>
     <input type="file" name="zdjecie">Zdjecie <br />
+    <input name="tytul"/>tytuł<br/>
+    <textarea rows="2" cols="20" name="opis">opis</textarea><br/>
+    <input type="number" name="cena"/>cena<br/>
     <input type="checkbox" name="tv" />tv <br />
     <input type="checkbox" name="lodowka" />lodowka <br />
     <input type="checkbox" name="wc" />wc <br />
@@ -25,11 +28,8 @@
     <input type="checkbox" name="jacuzzi" />jacuzzi <br />
     <input type="checkbox" name="klimatyzacja" />klimatyzacja <br />
     <input type="checkbox" name="internet" />internet <br />
-    <?php /* <input type="checkbox" name="zdjecia" />zdjecia <br /> */?>
     <input type="submit" value="Wyslij"> <input type="reset">
     </form>
-    <?php
-    // put your code here
-    ?>
+
   </body>
 </html>

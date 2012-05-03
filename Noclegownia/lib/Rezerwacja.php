@@ -61,29 +61,32 @@ class Rezerwacja{
     global $polaczenie;
     $user->__get('id');
     $query = "";
+    $now = time();
     if($user->__get('typ_konta')==Uzytkownik::ADMIN){
       $query =
         "SELECT
-            rezerwacje.id_rez, rezerwacje.id_pokoj, rezerwacje.data_od, rezerwacje.data_do, rezerwacje.wartosc,
-            klient.id AS klient_id, concat(klient.login, ': ', klient.imie, ' ', klient.nazwisko) AS klient_nazwa,
-            noclegownia.id AS id_miejsca, noclegownia.nazwa AS nazwa_miejsca, noclegownia.miejscowosc AS miejscowosc_miejsca
+            rezerwacje.id_rez, rezerwacje.id_pokoj, rezerwacje.data_od, rezerwacje.data_do, rezerwacje.wartosc, rezerwacje.login,
+            concat(klient.login, ': ', klient.imie, ' ', klient.nazwisko) AS klient_nazwa,
+            noclegownia.id AS id_miejsca, noclegownia.nazwa AS nazwa_miejsca, noclegownia.miejscowosc AS miejscowosc_miejsca,
+            pokoj.tytul
           FROM rezerwacje
             JOIN pokoj ON rezerwacje.id_pokoj = pokoj.id_pok
             JOIN noclegownia ON pokoj.id_miejsce = noclegownia.id
-            JOIN uzytkownik AS klient ON rezerwacje.id_user = klient.id
-          WHERE rezerwacje.data_do > now() AND rezerwacje.status = ". self::NOWA ." ORDER BY rezerwacje.id_rez";
+            JOIN uzytkownik AS klient ON rezerwacje.login = klient.login
+          WHERE rezerwacje.data_do > $now AND rezerwacje.status = ". self::NOWA ." ORDER BY rezerwacje.id_rez";
     } else if($user->__get('typ_konta')==Uzytkownik::RECEPCJONISTA){
       $query =
         "SELECT
-          rezerwacje.id_rez, rezerwacje.id_pokoj, rezerwacje.data_od, rezerwacje.data_do, rezerwacje.wartosc,
-          klient.id AS klient_id, concat(klient.login, ': ', klient.imie, ' ', klient.nazwisko) AS klient_nazwa,
-          noclegownia.id AS id_miejsca, noclegownia.nazwa AS nazwa_miejsca, noclegownia.miejscowosc AS miejscowosc_miejsca
+          rezerwacje.id_rez, rezerwacje.id_pokoj, rezerwacje.data_od, rezerwacje.data_do, rezerwacje.wartosc,rezerwacje.login,
+          concat(klient.login, ': ', klient.imie, ' ', klient.nazwisko) AS klient_nazwa,
+          noclegownia.id AS id_miejsca, noclegownia.nazwa AS nazwa_miejsca, noclegownia.miejscowosc AS miejscowosc_miejsca,
+          pokoj.tytul
         FROM rezerwacje
           JOIN pokoj ON rezerwacje.id_pokoj = pokoj.id_pok
           JOIN noclegownia ON pokoj.id_miejsce = noclegownia.id
-          JOIN uzytkownik AS klient ON rezerwacje.id_user = klient.id
+          JOIN uzytkownik AS klient ON rezerwacje.login = klient.login
           JOIN uzytkownik as zarzadca ON zarzadca.id_miejsce = noclegownia.id
-        WHERE rezerwacje.data_do > now() AND rezerwacje.status = ". self::NOWA ." AND zarzadca.id = {$user->__get('id')}
+        WHERE rezerwacje.data_do > $now AND rezerwacje.status = ". self::NOWA ." AND zarzadca.id = {$user->__get('id')}
         ORDER BY rezerwacje.id_rez";
     }
 
@@ -94,10 +97,11 @@ class Rezerwacja{
     }
     $rezerwacje = array();
     while($row = mysql_fetch_assoc($result)){
-      $rezerwacja = new Rezerwacja($row['id_rez'], $row['id_pokoj'], $row['klient_id'], $row['data_od'], $row['data_do'], $row['wartosc'], 0);
+      $rezerwacja = new Rezerwacja($row['id_rez'], $row['id_pokoj'], $row['login'], $row['data_od'], $row['data_do'], $row['wartosc'], 0);
       $nazwa_klienta = $row['klient_nazwa'];
-      $noclegownia = new Noclegownia('',$row['id_miejsca'], $row['nazwa_miejsca'], $row['miejscowosc_miejsca'], '', '', '', '', '', '');
-      $rezerwacje[] = array('rezerwacja' => $rezerwacja, 'nazwa_klienta' => $nazwa_klienta, 'noclegownia' => $noclegownia);
+      $noclegownia = new Noclegownia($row['id_miejsca'], $row['nazwa_miejsca'], $row['miejscowosc_miejsca'],'' , '', '', '', '', '', '');
+      $pokoj = $row['tytul'];
+      $rezerwacje[] = array('rezerwacja' => $rezerwacja, 'nazwa_klienta' => $nazwa_klienta, 'noclegownia' => $noclegownia, 'pokoj' => $pokoj);
     }
     return $rezerwacje;
   }
