@@ -22,17 +22,8 @@ if(@$_SESSION['zalogowany']==1)
 }
 </style>
 </head>
-
 <body>
-
-     <b><h1 class="style1">Zarządzanie </b>rezerwacjami - Recepcjonista</h1>
-		<br /><br /><br /><br /><br />
-	<table style="width: 100%">
-	<tr>
-		<td class="style1" style="width: 100%">np. wyświetlenie rezerwacji dla noclegowni</td>
-	</tr>
-	</table>
-
+<?php header('Location: ../zarzadzanie_noclegownia/index.php?akcja=listujRezerwacje'); ?>
 </body>
 </html>	
 <?php

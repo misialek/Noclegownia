@@ -39,10 +39,27 @@ background: #D0C6A4
     <?php  else: ?>
       <input type="hidden" name="noclegownia" value="<?php echo $dostepneNoclegownie[0]->__get('id'); ?>"/>
     <?php endif;?>
-	<br />
+<<<<<<< HEAD
+    <input type="file" name="zdjecie">Zdjecie <br />
     <input name="tytul"/>tytuł<br/>
     <textarea rows="2" cols="20" name="opis">opis</textarea><br/>
     <input type="number" name="cena"/>cena<br/>
+    <input type="checkbox" name="tv" />tv <br />
+    <input type="checkbox" name="lodowka" />lodowka <br />
+    <input type="checkbox" name="wc" />wc <br />
+    <input type="checkbox" name="prszynic" />prysznic <br />
+    <input type="checkbox" name="wanna" />wanna <br />
+    <input type="checkbox" name="jacuzzi" />jacuzzi <br />
+    <input type="checkbox" name="klimatyzacja" />klimatyzacja <br />
+    <input type="checkbox" name="internet" />internet <br />
+    <input type="submit" value="Wyslij"> <input type="reset">
+    </form>
+
+=======
+	<br />
+	<table align="center">
+	<tr>
+		<td><strong>
 		Dodaj zdjęcie:<br /><input style="width:200px" type="file" size="14" name="zdjecie"><br />
 		</strong></td>
 		<td class="td1" style="text-align:left;">
@@ -51,6 +68,7 @@ background: #D0C6A4
 		Cena pokoju:<br /><input style="width:60px" type="number" name="cena"/> zł/24h<br/><br/>
 		Opis pokoju:<br /><textarea style="height:60px;width:200px" rows="2" cols="20" name="opis"></textarea>
 		</strong></span>
+		</td>
 	</tr>
 	</table>
 	<h2>Pokój posiada:</h2>
@@ -79,6 +97,6 @@ background: #D0C6A4
 	<br />
     <input type="submit" value="Wyslij"> <input type="reset">
     </form>
-
+>>>>>>> 506b3d1f8659796f42a5989b4d365af0fbf48f3e
   </body>
 </html>

@@ -10,7 +10,7 @@
   </script>
 <?php
 include 'db.php';
-if ($_POST["wyszukaj"]) 
+if (isset($_POST["wyszukaj"]))
 {
 $typ_miejsca = $_POST["typ_miejsca"];
 $miasto = $_POST["miasto"];
@@ -30,20 +30,20 @@ $pobyt_do = '';
 if((strlen($data_przybycia) != 0) OR (strlen($data_wyjazdu) != 0)){
 $d=explode('/',$data_przybycia);
 $month=$d[0];
-$day=$d[1]; 
+$day=$d[0]; 
 $year=$d[2];
 $pobyt_od = mktime(0, 0, 0, $month, $day, $year); 
 
 $e=explode('/',$data_wyjazdu);
 $month=$e[0];
-$day=$e[1]; 
+$day=$e[0]; 
 $year=$e[2];
 $pobyt_do = mktime(0, 0, 0, $month, $day, $year);
 }
 
-if(($tv == 'Brak') AND ($lodowka == 'Brak') AND ($wc == 'Brak') AND ($prysznic == 'Brak') AND ($wanna == 'Brak') AND ($jacuzzi == 'Brak') AND ($klimatyzacja == 'Brak') AND ($internet == 'Brak')){
+if(($tv == '0') AND ($lodowka == '0') AND ($wc == '0') AND ($prysznic == '0') AND ($wanna == '0') AND ($jacuzzi == '0') AND ($klimatyzacja == '0') AND ($internet == '0')){
 
-if((strlen($typ_miejsca) != 0) AND (strlen($miasto) == 0) AND (strlen($pobyt_od) == 0) AND (strlen($pobyt_do) == 0) AND ($tv == 'Brak') AND ($lodowka == 'Brak') AND ($wc == 'Brak') AND ($prysznic == 'Brak') AND ($wanna == 'Brak') AND ($jacuzzi == 'Brak') AND ($klimatyzacja == 'Brak') AND ($internet == 'Brak')){
+if((strlen($typ_miejsca) != 0) AND (strlen($miasto) == 0) AND (strlen($pobyt_od) == 0) AND (strlen($pobyt_do) == 0) AND ($tv == '0') AND ($lodowka == '0') AND ($wc == '0') AND ($prysznic == '0') AND ($wanna == '0') AND ($jacuzzi == '0') AND ($klimatyzacja == '0') AND ($internet == '0')){
     $sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie,
 	count(pokoj.id_miejsce) AS ile
 	FROM pokoj
@@ -73,7 +73,7 @@ if((strlen($typ_miejsca) != 0) AND (strlen($miasto) == 0) AND (strlen($pobyt_od)
                                             }
 }
 
-if((strlen($typ_miejsca) != 0) AND (strlen($miasto) != 0) AND (strlen($pobyt_od) == 0) AND (strlen($pobyt_do) == 0) AND ($tv == 'Brak') AND ($lodowka == 'Brak') AND ($wc == 'Brak') AND ($prysznic == 'Brak') AND ($wanna == 'Brak') AND ($jacuzzi == 'Brak') AND ($klimatyzacja == 'Brak') AND ($internet == 'Brak')){
+if((strlen($typ_miejsca) != 0) AND (strlen($miasto) != 0) AND (strlen($pobyt_od) == 0) AND (strlen($pobyt_do) == 0) AND ($tv == '0') AND ($lodowka == '0') AND ($wc == '0') AND ($prysznic == '0') AND ($wanna == '0') AND ($jacuzzi == '0') AND ($klimatyzacja == '0') AND ($internet == '0')){
     $sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie,
 	count(pokoj.id_miejsce) AS ile
 	FROM pokoj
@@ -103,7 +103,7 @@ if((strlen($typ_miejsca) != 0) AND (strlen($miasto) != 0) AND (strlen($pobyt_od)
                                             }
 }
 
-if((strlen($typ_miejsca) != 0) AND (strlen($miasto) == 0) AND (strlen($pobyt_od) != 0) AND (strlen($pobyt_do) != 0) AND ($tv == 'Brak') AND ($lodowka == 'Brak') AND ($wc == 'Brak') AND ($prysznic == 'Brak') AND ($wanna == 'Brak') AND ($jacuzzi == 'Brak') AND ($klimatyzacja == 'Brak') AND ($internet == 'Brak')){
+if((strlen($typ_miejsca) != 0) AND (strlen($miasto) == 0) AND (strlen($pobyt_od) != 0) AND (strlen($pobyt_do) != 0) AND ($tv == '0') AND ($lodowka == '0') AND ($wc == '0') AND ($prysznic == '0') AND ($wanna == '0') AND ($jacuzzi == '0') AND ($klimatyzacja == '0') AND ($internet == '0')){
 
 	$sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie,
 	count(pokoj.id_miejsce) AS ile
@@ -150,7 +150,7 @@ if((strlen($typ_miejsca) != 0) AND (strlen($miasto) == 0) AND (strlen($pobyt_od)
                                             }									
 }
 
-if((strlen($typ_miejsca) != 0) AND (strlen($miasto) != 0) AND (strlen($pobyt_od) != 0) AND (strlen($pobyt_do) != 0) AND ($tv == 'Brak') AND ($lodowka == 'Brak') AND ($wc == 'Brak') AND ($prysznic == 'Brak') AND ($wanna == 'Brak') AND ($jacuzzi == 'Brak') AND ($klimatyzacja == 'Brak') AND ($internet == 'Brak')){
+if((strlen($typ_miejsca) != 0) AND (strlen($miasto) != 0) AND (strlen($pobyt_od) != 0) AND (strlen($pobyt_do) != 0) AND ($tv == '0') AND ($lodowka == '0') AND ($wc == '0') AND ($prysznic == '0') AND ($wanna == '0') AND ($jacuzzi == '0') AND ($klimatyzacja == '0') AND ($internet == '0')){
 	
 	$sql="SELECT noclegownia.id, noclegownia.nazwa, noclegownia.miejscowosc, noclegownia.kod_pocztowy, noclegownia.ulica, noclegownia.opis, noclegownia.ocena, noclegownia.typ, noclegownia.status, noclegownia.zdjecie,
 	count(pokoj.id_miejsce) AS ile

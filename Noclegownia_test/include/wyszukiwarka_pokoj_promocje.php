@@ -1,5 +1,4 @@
 <?php
-							$i++;
 							echo '<table border="1" width="100%"><tr><td width="40%">
 							<figure class="left marg_right1">';
 							$id_pokoj = $result2['id_pok'];
@@ -9,7 +8,7 @@
 							else
 							{echo '<br /><br /><br /><br /><center>Nie dodano zdjęcia dla tego pokoju.</center>';}
 							echo '</figure></td>
-							<td><p class="pad_bot2"><strong><span style="color: black; font-size: 11pt">'.$result2['tytul'].' - '.$result2['cena'].'zł/24h</strong><strong><span style="color:black; float: right; font-size: 8pt">'.$i.'<span></span></p>
+							<td><p class="pad_bot2"><strong><span style="color: black; font-size: 11pt">'.$result2['tytul'].' - '.$result2['cena'].'zł/24h</strong></p>
 							<p class="pad_bot2"><strong>Pokój posiada: </strong><br /></p>';
 							if($result2['tv'] == '1'){echo ' TV<input type="checkbox" checked="checked" />';}else{echo ' TV<input type="checkbox" />';}
                             if($result2['lodowka'] == '1'){echo ' Lodówka<input type="checkbox" checked="checked" />';}else{echo ' Lodówka<input type="checkbox" />';}

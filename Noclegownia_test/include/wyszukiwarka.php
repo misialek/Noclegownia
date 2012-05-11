@@ -33,22 +33,22 @@
 </div><!-- End demo -->				
 							
 							<div class="wrapper">
-								<input type="hidden" name="tv" value="Brak" />
-								<div class="radio"><input type="checkbox" name="tv" value="Dostępny">TV</div>
-								<input type="hidden" name="lodowka" value="Brak" />
-                                <div class="radio"><input type="checkbox" name="lodowka" value="Dostępny">Lodówka</div>
-								<input type="hidden" name="wc" value="Brak" />
-                                <div class="radio"><input type="checkbox" name="wc" value="Dostępny">WC</div>
-								<input type="hidden" name="prysznic" value="Brak" />
-                            	<div class="radio"><input type="checkbox" name="prysznic" value="Dostępny">Prysznic</div>
-								<input type="hidden" name="wanna" value="Brak" />
-                                <div class="radio"><input type="checkbox" name="wanna" value="Dostępny">Wanna</div>
-								<input type="hidden" name="jacuzzi" value="Brak" />
-                                <div class="radio"><input type="checkbox" name="jacuzzi" value="Dostępny">Jacuzzi&nbsp;&nbsp;</div>
-								<input type="hidden" name="klimatyzacja" value="Brak" />
-                                <div class="radio end"><input type="checkbox" name="klimatyzacja" value="Dostępny">Klimatyzacja</div>
-								<input type="hidden" name="internet" value="Brak" />
-								<div class="radio end"><input type="checkbox" name="internet" value="Dostępny">Internet</div>
+								<input type="hidden" name="tv" value="0" />
+								<div class="radio"><input type="checkbox" name="tv" value="1">TV</div>
+								<input type="hidden" name="lodowka" value="0" />
+                                <div class="radio"><input type="checkbox" name="lodowka" value="1">Lodówka</div>
+								<input type="hidden" name="wc" value="0" />
+                                <div class="radio"><input type="checkbox" name="wc" value="1">WC</div>
+								<input type="hidden" name="prysznic" value="0" />
+                            	<div class="radio"><input type="checkbox" name="prysznic" value="1">Prysznic</div>
+								<input type="hidden" name="wanna" value="0" />
+                                <div class="radio"><input type="checkbox" name="wanna" value="1">Wanna</div>
+								<input type="hidden" name="jacuzzi" value="0" />
+                                <div class="radio"><input type="checkbox" name="jacuzzi" value="1">Jacuzzi&nbsp;&nbsp;</div>
+								<input type="hidden" name="klimatyzacja" value="0" />
+                                <div class="radio end"><input type="checkbox" name="klimatyzacja" value="1">Klimatyzacja</div>
+								<input type="hidden" name="internet" value="0" />
+								<div class="radio end"><input type="checkbox" name="internet" value="1">Internet</div>
 							</div>
 							<a href="#" class="button" onclick="document.getElementById('form_1').submit()">Szukaj</a>
 							<br>

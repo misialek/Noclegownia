@@ -15,7 +15,7 @@ if(@$_SESSION['zalogowany']==1)
 <style type="text/css">
 body {font:10px Arial, Helvetica, sans-serif;}
 th, td {
-padding: 7px
+padding: 2px 6px 2px 6px;
 }
 th {
 background: #FFF3C9; 
@@ -55,7 +55,11 @@ function wysylaj()
 	if($result['status'] == '0'){
 	$status = 'Nieaktywowany';}
 	if($result['status'] == '1'){
-	$status = 'Aktywowany';}
+	$status = 'Zaakceptowany';}
+	if($result['status'] == '2'){
+	$status = 'Wykonany';}
+	if($result['status'] == '3'){
+	$status = 'Odrzucony';}
 	$dni = $result['data_do'] - $result['data_od'] - 86400;
 	$godz = date('G', $dni);
 	$min = date('i', $dni);
@@ -77,12 +81,12 @@ echo '<tr>
 		echo '<td>'.date('j', $dni).' dzień '.date('G:i', $dni).' godz.</td>';}else{
 		echo '<td>'.date('j', $dni).' dni '.date('G:i', $dni).' godz.</td>';}}}
 		echo '<td>'.$status.'</td>
-		<td>'.round($cena, 0).' zł</td>';
-		if($result['status'] == '1'){
+		<td>'.round($cena, 0).'zł</td>';
+		if(($result['status'] == '2') OR ($result['status'] == '3')){
 		echo '<td><a href="rezerwacja_zm.php?zmien='.$result['id_rez'].'&id_pok='.$result['id_pokoj'].'"><button disabled="disabled">Przesuń</button></a></td>
 		<form method="post" onsubmit="return wysylaj()" action="rezerwacja_usun.php?usun='.$result['id_rez'].'">
 		<td><input type="submit" value="Usuń" disabled="disabled" /></form></td>';}
-		if($result['status'] == '0'){
+		if(($result['status'] == '0') OR ($result['status'] == '1')){
 		echo '<td><a href="rezerwacja_zm.php?zmien='.$result['id_rez'].'&id_pok='.$result['id_pokoj'].'"><button>Przesuń</button></a></td>
 		<form method="post" onsubmit="return wysylaj()" action="rezerwacja_usun.php?usun='.$result['id_rez'].'">
 		<td><input type="submit" value="Usuń" /></form></td>';}

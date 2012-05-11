@@ -13,14 +13,13 @@ if ($_POST["zmien_dane"]) {
 
 		if (!preg_match("/[(@)]/", $email)) {
         $blad++;
-        echo '<p> Proszę wprowadzić poprawnie adres email.</p>';
+        echo '<a href="uzytkownik.php"><button>Wstecz</button></a>&nbsp;&nbsp;Proszę wprowadzić poprawnie adres email.';
         }
         if($blad == 0){
 		$zapytaj = "UPDATE $tabela SET imie='$imie', nazwisko='$nazwisko', email='$email' WHERE login='$login'";
 		if(mysql_query($zapytaj)){
-		echo '<p>Zmiany zostały wprowadzone</p>';} 
-
+		echo '<a href="uzytkownik_zmien_da.php"><button>Wstecz</button></a>&nbsp;&nbsp;Zmiany zostały wprowadzone.';} 
+}
 }else{header('Location: ../index.php ');}
-}
-}
+}else{header('Location: ../index.php ');}
 ?>

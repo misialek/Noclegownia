@@ -81,10 +81,14 @@ background: #D0C6A4
               <?php echo $rezerwacja["nazwa_klienta"];?>
             </td>
             <td>
+<<<<<<< HEAD
               <?php echo date("d-m-y", $rezerwacja["rezerwacja"]->__get('data_od'));?>
+=======
+              <?php echo date("d.m.Y, G:i", $rezerwacja["rezerwacja"]->__get('data_od'));?>
             </td>
             <td>
-              <?php echo date("d-m-y", $rezerwacja["rezerwacja"]->__get('data_do'));?>
+              <?php echo date("d.m.Y, G:i", $rezerwacja["rezerwacja"]->__get('data_do'));?>
+>>>>>>> 506b3d1f8659796f42a5989b4d365af0fbf48f3e
             </td>
 		  <?php 
 				$id_rez = $rezerwacja["rezerwacja"]->__get('id_rez');
@@ -99,7 +103,11 @@ background: #D0C6A4
 				$min = date('i', $dni);
 				$cena = date('j', $dni) * $result['cena'] + ($godz/24) * $result['cena'] + ($min/1440) * $result['cena']; ?>
             <td>
+<<<<<<< HEAD
+              <?php echo date("d-m-y", $rezerwacja["rezerwacja"]->__get('data_do'));?>
+=======
               <?php echo round($cena, 0);?>zł
+>>>>>>> 506b3d1f8659796f42a5989b4d365af0fbf48f3e
             </td>
             <td>
               <input type="button" value="Przesuń" onclick="location.href = '../rezerwacje/rezerwacja_zm_recepcionista.php?zmien=<?php echo $rezerwacja["rezerwacja"]->__get('id_rez');?>&id_pok=<?php echo $rezerwacja["rezerwacja"]->__get('id_pokoj');?>';"  />

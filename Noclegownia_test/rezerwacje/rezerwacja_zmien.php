@@ -1,9 +1,10 @@
 ﻿<?php
 session_start();
 include '../db.php';
-$login = $_SESSION['login'];
+include '../include/mail_to.php';
 if(@$_SESSION['zalogowany']==1){
-if ($_POST["zmien"]) 
+$login = $_SESSION['login'];
+if(isset($_POST["zmien"]))
 {
 $id_rezerwacji = $_POST["id_rez"];
 $id_pok = $_POST["id_pok"];
@@ -18,7 +19,7 @@ $hour_o = date("H");
 $minute_o = date("i");
 
 if ((strlen($rezerwacja_o) < 6) or (strlen($rezerwacja_o) > 11) or (strlen($rezerwacja_d) < 6 ) or (strlen($rezerwacja_d) > 11)) {
-echo '<p>Wypełnij pola.</p>';}else{
+echo '<a href="rezerwacja_zm.php?zmien='.$id_rezerwacji.'&id_pok='.$id_pok.'"><button>Wstecz</button></a>&nbsp;&nbsp;Wypełnij pola.';}else{
 
 $d=explode('/',$rezerwacja_o);
 $month=$d[0];
@@ -40,8 +41,8 @@ $obecna_data = mktime($hour_o, $minute_o, 0, $month, $day, $year);
 
 	if(($rezerwacja_od + 86400) > $rezerwacja_do){
 	echo 'Minimalny termin rezerwacji to jedna doba.';}else{
-	if($obecna_data > $rezerwacja_od){echo 'Wybrana data już była';}else{
-	if($rezerwacja_od > $rezerwacja_do){echo 'Data wyjazdu jest wcześniejsza od daty przyjazdu';}else{
+	if($obecna_data > $rezerwacja_od){echo '<a href="rezerwacja_zm.php?zmien='.$id_rezerwacji.'&id_pok='.$id_pok.'"><button>Wstecz</button></a>&nbsp;&nbsp;Wybrana data już była.';}else{
+	if($rezerwacja_od > $rezerwacja_do){echo '<a href="rezerwacja_zm.php?zmien='.$id_rezerwacji.'&id_pok='.$id_pok.'"><button>Wstecz</button></a>&nbsp;&nbsp;Data wyjazdu jest wcześniejsza od daty przyjazdu.';}else{
 	$sql="SELECT * FROM rezerwacje WHERE id_rez != '$id_rezerwacji' AND (id_pokoj = '$id_pok'
 	AND (data_od <= $rezerwacja_od 
 	AND data_do <= $rezerwacja_do 
@@ -53,11 +54,21 @@ $obecna_data = mktime($hour_o, $minute_o, 0, $month, $day, $year);
 	$query=mysql_query($sql);
 	if( mysql_num_rows( $query ) > 0)
 	{
-	echo 'Proszę wybrać inny termin!<br />
-	Obecny termin jest już zajęty';
+	echo '<a href="rezerwacja_zm.php?zmien='.$id_rezerwacji.'&id_pok='.$id_pok.'"><button>Wstecz</button></a>&nbsp;&nbsp;Proszę wybrać inny termin!&nbsp;Obecny termin jest już zajęty.';
 	}else{
 	if(mysql_query("UPDATE rezerwacje SET data_od='$rezerwacja_od', data_do='$rezerwacja_do', status='0' WHERE login='$login' AND id_rez = '$id_rezerwacji'")){
-	echo 'Przesunięto rezerwację.<br /> W przyszłości zostanie wysłany e-mail z linkiem potwierdzającym przesunięcie rezerwacji.';}
+	echo '<a href="rezerwacja_zm.php?zmien='.$id_rezerwacji.'&id_pok='.$id_pok.'"><button>Wstecz</button></a>&nbsp;
+	Przesunięto termin rezerwacji.<br />&nbsp;&nbsp;W ciągu nabliższych 5 minut otrzymasz wiadomość e-mail z linkiem potwierdzającym rezerwację.';
+	$mail=mysql_query("SELECT uzytkownik.email, uzytkownik.login AS log, rezerwacje.id_rez FROM uzytkownik JOIN rezerwacje ON (uzytkownik.login = rezerwacje.login) 
+	WHERE uzytkownik.login='$login' AND data_od=$rezerwacja_od AND rezerwacje.status='0'");
+	$email=mysql_fetch_assoc($mail);
+	$log=$email['log'];
+	$id_rez=$email['id_rez'];
+	$list = "Witaj $login !
+    Kliknij w poniższy link, aby aktywować rezerwację.<br />
+	Uwaga: Po aktywacji nastąpi potwierdzenie rezerwacji przez pracownika.
+	http://www.spowiedz.xaa.pl/noclegownia/komunikaty.php?login=$log&id=$id_rez";
+	mail($email['email'], "Potwierdzenie rezerwacji.", $list, $mail_to);}
 	}
 	}
 	}

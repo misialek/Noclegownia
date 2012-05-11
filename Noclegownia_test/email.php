@@ -1,9 +1,8 @@
 ﻿<?php
+include 'include/mail_to.php';
 $name = $_POST['name'];
 $email = $_POST['email'];
 $message = $_POST['message'];
-     
-$mail_to = 'biuro@spowiedz.xaa.pl';
     
 if (!preg_match("/[(@)]/", $email)){
 ?>
@@ -26,7 +25,7 @@ alert('Wprowadź w wiadomości więcej niż 16 znaków.');
 window.location = 'kontakt.php';
 </script>
 <?php }else{
-$mail_status = mail($mail_to, "Pytanie klienta.", $message, $email);
+$mail_status = mail($email, "Pytanie klienta.", $message, $mail_to);
 if ($mail_status) { ?>
 <script language="javascript" type="text/javascript">
 alert('Wiadomość została wysłana.');

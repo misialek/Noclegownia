@@ -24,7 +24,10 @@ $id=($_GET['pok']);
 if(isset($_GET['start'])){
 	$start = $_GET['start'];}else{header('Location: przegladaj.php?start=0');}
 	$na_stronie = 5;
-		$sql = "SELECT * FROM noclegownia LIMIT ".($start).",".$na_stronie."";
+		$sql = "SELECT * FROM pokoj
+		JOIN noclegownia ON (id_miejsce = id)
+		GROUP BY id
+		ORDER BY typ LIMIT ".($start).",".$na_stronie."";
 		$query=mysql_query($sql);
 		if( mysql_num_rows( $query ) > 0){
 		//$row = mysql_fetch_row($query))
@@ -39,9 +42,9 @@ if(isset($_GET['start'])){
 				<table border="1"><tr><td>
 					<figure class="left marg_right1"><img src="images/noclegownia.jpg" alt=""></figure></td>
 					<td><p class="pad_bot2"><strong><span style="color: black; font-size: 18pt">'.$result['nazwa'].'</span><br /><br />Typ miejsca: '.$result['typ'].'</strong></p>
-					<p class="pad_bot2">Adres: ul. '.$result['ulica'].', '.$result['kod_pocztowy'].' '.$result['miejscowosc'].'</p>
-                    <br /><p class="pad_bot2">Opis: '.$result['opis'].'</p>
-					<br /><br /><a href="przegladaj.php?start='.$_GET['start'].'&pok='.$result['id'].'" class="pill left button"><span class="rightarrow icon"></span>Pokaz ('.$ile['ile'].')</a>';
+					<p class="pad_bot2"><strong>Adres:</strong> ul. '.$result['ulica'].', '.$result['kod_pocztowy'].' '.$result['miejscowosc'].'</p>
+                    <p class="pad_bot2"><strong>Opis:</strong> '.$result['opis'].'</p>
+					<br /><br /><br /><a href="przegladaj.php?start='.$_GET['start'].'&pok='.$result['id'].'" class="pill left button"><span class="rightarrow icon"></span>Pokaz ('.$ile['ile'].')</a>';
 					?>
 					<a onclick="window.open('<?php echo 'komentarze/komentarze.php?kom='.$id_noclegownia.'';  ?>', 'Komentarze', 'toolbar=no, scrollbars=yes, location=no, height=430,width=600');" class="pill right2 button"><span class="comment icon"></span>Komentarze</a>
 					<?php

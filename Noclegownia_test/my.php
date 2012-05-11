@@ -41,10 +41,8 @@ include 'include/colorbox_class.php';
 <?php
 include 'include/belka.php';
 ?>
-
 <div class="extra">
 	<div class="main">
-	<header>
 			<div class="wrapper">
 				<h1><a href="index.html" id="logo">Tania baza noclegowa</a></h1>
 				<div class="right">
@@ -67,18 +65,33 @@ include 'include/zakladki.php';
 <?php
 include 'include/wyszukiwarka.php';
 ?>
-			<article class="col1 pad_left1">
-				<div class="text">
-					<h2>O nas</h2>
-				</div>
+			<article class="col2 pad_left1">
+				<span style="font-size:32px;color:#323232;line-height:40px;padding:4px 0 15px 0;letter-spacing:-1px"><strong>O NAS</strong></span>
+			<br /><br /><br />
+			<table width="100%">
+			<tr>
+				<td width="45%">
+				<span style="font-size:20px;padding:4px 0 18px 0;letter-spacing:-1px"><center>Stronę przygotowali</center></span><br /><br />
+				<span style="font-size:16px">
+				<li />Michał Tomaszczyk<br /><br />
+				<li />Maciej<br /><br />
+				<li />Łukasz Wachowiak<br /><br />
+				<li />Bartosz Wyzuj
+				</span>
+				</td>
+				<td>
+				<br /><img src="images/wsnhid.gif"  height="" width="260" />
+				</td>
+			</tr>
+			</table><br /><br /><br />
+			<span style="font-size:12px">Strona powstała w celu zaliczenia przedmiotu "Projekt zespołowy".</span>
 			</article>
-		</header>
-        
-	<div class="block"></div>
+        <section id="content"></section>
 </div>
 <?php
 include 'include/stopka.php';
 ?>
+</div>
 <script type="text/javascript"> Cufon.now(); </script>
 </body>
 </html>
