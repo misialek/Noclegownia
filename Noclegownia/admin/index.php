@@ -1,5 +1,12 @@
-<!DOCTYPE html>
+<?php
+session_start();
+include '../db.php';
+$login = $_SESSION['login'];
+    $uprawnienia=(mysql_query("SELECT * FROM uzytkownik WHERE login='$login' AND typ_konta=10"));
+    if (mysql_num_rows($uprawnienia) == 1) {
+?>
 
+<!DOCTYPE html>
 <html lang="pl">
 
 <head>
@@ -7,6 +14,7 @@
 <title>Administrator - Home</title>
 
 <meta charset="utf-8">
+<link rel="stylesheet" href="../button/stylesheets/css3buttons.css" type="text/css" />
 <link rel="stylesheet" href="../css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="../css/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
@@ -34,129 +42,55 @@
 <?php
 include '../include/colorbox_class.php';
 ?>
-<?php 
 
-session_start();
-
-if (!isset($_SESSION['login']))
- { 
-echo'<center>';
-echo'<font size="40">';
-echo'<font color="black"';
-echo'<br><br><br><br><br><br><br>';
-echo 'Ta strona wymaga zalogowania';
-echo'<br>';
-echo'<a href="../logowanie.php">Zaloguj sie</a>';
- 
-   exit;
-}
-?>
 
 </head>
 <body id="page1">
 <?php
-echo '<table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed; 	text-align: center;  color: #FFFFFF;background-color: #313131; width:100%;"> 
-<td><strong>Zalogowany: '.$_SESSION['login'].' </strong></td></table>';
+include '../include/belka_admin.php';
 ?>
-
 <div class="extra">
-
 	<div class="main">
-
-<!-- header -->
-
-		<header>
-
 			<div class="wrapper">
-				<h1><a href="../index.php" id="logo">Tania baza noclegowa</a></h1>
-
-
-							
+				<h1><a href="../index.php" id="logo">Baza noclegowa</a></h1>
 				<div class="right">
 					<div class="wrapper">
-						<!--<form id="search">-->
+						<form id="search">
 							<div>
-								<a class='right' href="admin/index.php">Administracja</a>
 							</div>
-						<!--</form>-->
+						</form>
 					</div>
 <?php
 include '../include/menu_admin.php';
 ?>	
 				</div>
 			</div>	
-
 			<nav>
-
 <?php
 include '../include/zakladki_admin.php';
 ?>
-
 			</nav>
-
-
-<!-- / header -->
-
-<!-- content -->
-
 		<section id="content">
-
 			<article class="col1">
-
-				<h3>cos tam cos tam</h3>
-
-				<div class="pad">
-
-					dfwfsdf
-
-				</div>
-
+				<h3><div style = "cursor:pointer;hand" onclick="location.href = '../index.php';">Opusc panel</div></h3>
        		</article>
 
 			<article class="col2 pad_left1">
-
-				<h2>Wyniki wyszukiwania</h2>
-
+				<h2>Panel administracyjny</h2>
 				<div class="wrapper under">
-
-					11
-
+					Witaj w panelu administracyjnym!<br />
+					Panel administracyjny umożliwia zarządanie zasobami.
 				</div>
-
-				<div class="wrapper">
-
-					22
-
-				</div>
-
        		</article>
-
 		</section>
-
-		
-
-		
-
-  
-
- 
-
-
-
-<!-- / content -->
-
 	</div>
-
-	<div class="block"></div>
-
 </div>
-
 <?php
 include '../include/stopka.php';
 ?>
-
 <script type="text/javascript"> Cufon.now(); </script>
-
 </body>
-
 </html>
+<?php
+ }else {header('Location: denied.php ');}
+ ?>

@@ -15,9 +15,9 @@ class Rezerwacja{
   private $status;
   //const WSZYSTKIE_KOLUMNY = "rezerwacje.id_rez, rezerwacje.id_pokoj, rezerwacje.id_user, rezerwacje.data_od, rezerwacje.data_do, rezerwacje.wartosc, rezerwacje.status";
 
-  const NOWA = 0;
-  const ODRZUCONA = 2;
-  const ZAAKCEPTOWANA = 1;
+  const NOWA = 1;
+  const ODRZUCONA = 3;
+  const ZAAKCEPTOWANA = 2;
   function __construct(){
     $args = func_get_args();
     if(count($args) == 1 && is_array($args)){

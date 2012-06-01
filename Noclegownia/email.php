@@ -1,9 +1,8 @@
 ﻿<?php
+include 'include/mail_to.php';
 $name = $_POST['name'];
 $email = $_POST['email'];
 $message = $_POST['message'];
-     
-$mail_to = 'biuro@spowiedz.xaa.pl';
     
 if (!preg_match("/[(@)]/", $email)){
 ?>

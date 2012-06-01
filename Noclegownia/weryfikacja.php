@@ -1,16 +1,16 @@
 ﻿<title>Aktywacja</title>
 <?php
- header('refresh: 5; url=http://localhost/Noclegownia/logowanie.php');
+ header('refresh: 5; url=http://noclegownia.keed.pl/index.php');
 if ($_GET['weryfikacja'] == 'potwierdz') {
  
-    include 'db.php'; // po??czenie si? z baz? danych
+    include 'db.php';
     $tabela = 'uzytkownik'; // zdefiniowanie tabeli MySQL
  
     $kod = htmlspecialchars(stripslashes(strip_tags(trim($_GET['kod']))), ENT_QUOTES); // filtrowanie $_GET['kod']
    //$kod = strip_tags(trim($_GET['kod']), ENT_QUOTES);
    
-    // je?eli kod znajduje si? URL, skrypt najpierw patrzy czy u?ytkownik ma aktywne konto
-    // je?eli nie ma, wtedy zmienia si? jego status, je?eli nie up?yn?o 48 godzin od rejestracji
+    // jeżeli kod znajduje się URL, skrypt najpierw patrzy czy użytkownik ma aktywne konto
+    // jeżeli nie ma, wtedy zmienia się jego status, jeżeli nie upłynol 48 godzin od rejestracji
     $wynik = mysql_query("SELECT * FROM $tabela WHERE kod='$kod' and status=1");
     if (mysql_num_rows($wynik) == 1) {
         echo '<p>Aktywowałeś/aś juź swoje konto.</p>';

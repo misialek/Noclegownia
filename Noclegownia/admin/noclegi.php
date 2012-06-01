@@ -1,5 +1,12 @@
-<!DOCTYPE html>
+﻿<?php
+session_start();
+include '../db.php';
+$login = $_SESSION['login'];
+    $uprawnienia=(mysql_query("SELECT * FROM uzytkownik WHERE login='$login' AND typ_konta=10"));
+    if (mysql_num_rows($uprawnienia) == 1) {
+?>
 
+<!DOCTYPE html>
 <html lang="pl">
 
 <head>
@@ -7,6 +14,7 @@
 <title>Administrator - Noclegi</title>
 
 <meta charset="utf-8">
+<link rel="stylesheet" href="../button/stylesheets/css3buttons.css" type="text/css" />
 <link rel="stylesheet" href="../css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="../css/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
@@ -34,50 +42,26 @@
 <?php
 include '../include/colorbox_class.php';
 ?>
-<?php 
 
-session_start();
-
-if (!isset($_SESSION['login']))
- { 
-echo'<center>';
-echo'<font size="40">';
-echo'<font color="black"';
-echo'<br><br><br><br><br><br><br>';
-echo 'Ta strona wymaga zalogowania';
-echo'<br>';
-echo'<a href="../logowanie.php">Zaloguj sie</a>';
-  // header("Location: index.php");
-   exit;
-}
-?>
 
 </head>
 <body id="page1">
 <?php
-echo '<table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed; 	text-align: center;  color: #FFFFFF;background-color: #313131; width:100%;"> 
-<td><strong>Zalogowany: '.$_SESSION['login'].' </strong></td></table>';
+include '../include/belka_admin.php';
 ?>
+
 <div class="extra">
 
 	<div class="main">
 
-<!-- header -->
-
-		<header>
-
 			<div class="wrapper">
 				<h1><a href="../index.php" id="logo">Tania baza noclegowa</a></h1>
-
-
-							
 				<div class="right">
 					<div class="wrapper">
-						<!--<form id="search">-->
+						<form id="search">
 							<div>
-								<a class='right' href="admin/index.php">Administracja</a>
 							</div>
-						<!--</form>-->
+						</form>
 					</div>
 <?php
 include '../include/menu_admin.php';
@@ -93,53 +77,25 @@ include '../include/zakladki_admin.php';
 
 			</nav>
 
-			
-
-			
-
-			
-
-<!-- / header -->
-
-<!-- content -->
-<!-- szukaj,dodaj,edytuj -->
 		<section id="content">
-
 			<article class="col1">
+				<h3><div style = "cursor:pointer;hand" onclick="location.href = '../index.php';">Opusc panel</div></h3>
+				<h3><a class="zarz" href="adm_zarzadzanie/nocleg_dod.php">Dodaj Nocleg.</a></h3>
+				<h3><a class="pokoj" href="../zarzadzanie_noclegownia/index.php?akcja=dodajPokoj">Dodaj Pokoj</a></h3>
+       		</article>
 
-				<h3>Nowosci</h3>
+			<article class="col2 pad_left1">
 
-				<div class="pad">
-
-					Dodano pokoj w hotelu:
-
-				</div>
+				<h2>Noclegownie w naszej bazie</h2>
+<?php
+include 'noclegi_list.php';
+?>
 
        		</article>
-			
-			<article class="col1">
-				<div class="pad">
-					<a href="dod_noc.php" class="button">Dodaj Noclegownie</a>
-				</div>
-			</article>
-			
-			<article class="col1">
-				<div class="pad">
-					<a href="szukaj_noc.php" class="button">Szukaj Noclegownie</a>
-				</div>
-			</article>						
 
 		</section>
 
 		
-
-		
-
-  
-
- 
-
-
 
 <!-- / content -->
 
@@ -156,4 +112,8 @@ include '../include/stopka.php';
 <script type="text/javascript"> Cufon.now(); </script>
 
 </body>
+
 </html>
+<?php
+ }else {header('Location: denied.php ');}
+ ?>

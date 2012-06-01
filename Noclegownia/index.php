@@ -12,6 +12,7 @@ include 'db.php';
 <head>
 <title>Strona główna</title>
 <meta charset="utf-8">
+<link rel="stylesheet" href="button/stylesheets/css3buttons.css" type="text/css" />
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
@@ -38,28 +39,20 @@ include 'include/colorbox_class.php';
 </head>
 <body id="page1">
 <?php
-if(@$_SESSION['zalogowany']==1){
-$login = $_SESSION['login'];
-$inf=mysql_query("SELECT * FROM uzytkownik WHERE login='$login'");
-$info=mysql_fetch_assoc($inf);
-echo '<table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed; 	text-align: center;  color: #FFFFFF;background-color: #313131; width:100%;"> 
-<td><strong>Zalogowany: '.$info['imie'].' '.$info['nazwisko'].'</strong></td></table>';}
+include 'include/belka.php';
 ?>
 
 <div class="extra">
 	<div class="main">
 	<header>
 			<div class="wrapper">
-				<h1><a href="index.html" id="logo">Tania baza noclegowa</a></h1>
-
-							
+				<h1><a href="index.php" id="logo">Tania baza noclegowa</a></h1>
 				<div class="right">
 					<div class="wrapper">
-						<!--<form id="search">-->
+						<form id="search">
 							<div>
-								<a class='right' href="admin/index.php">Administracja</a>
 							</div>
-						<!--</form>-->
+						</form>
 					</div>
 <?php
 include 'include/menu.php';
@@ -72,30 +65,23 @@ include 'include/zakladki.php';
 ?>
 			</nav>
 <?php 
-include 'include/wyszukiwarka.php ';
+include 'include/wyszukiwarka.php';
 ?>
 			<article class="col1 pad_left1">
 				<div class="text">
 					<h2>Mamy najlepsze oferty</h2>
-					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
-					<a href="#" class="button">Zobacz wiecej</a>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;W nszej ofercie masz możliwość rezerwacji kwater prywatnych, hoteli, moteli, schronisk i miejsc agroturystycznych. <br />Dzięki takiej różnorodności nasza oferta jest niepowtarzalna. Zapraszamy do wykonywania rezerwacji!</p>
+					<a href="przegladaj.php" class="button2">Zobacz wiecej</a>
 				</div>
 			</article>
-			<div class="img"><img src="images/img.jpg" alt=""></div>
+			<div class="img"><br /><br /><img src="images/img.jpg" alt=""></div>
 		</header>
         
 	<div class="block"></div>
 </div>
-<div class="body1">
-	<div class="main">
-<!-- footer -->
-		<footer>
-			Baza noclegowa<br/>
-			Copyright 2012
-		</footer>
-<!-- / footer -->
-	</div>
-</div>
+<?php
+include 'include/stopka.php';
+?>
 <script type="text/javascript"> Cufon.now(); </script>
 </body>
 </html>

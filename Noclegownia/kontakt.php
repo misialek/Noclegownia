@@ -12,6 +12,7 @@ include 'db.php';
 <head>
 <title>Kontakt</title>
 <meta charset="utf-8">
+<link rel="stylesheet" href="button/stylesheets/css3buttons.css" type="text/css" />
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
@@ -38,19 +39,14 @@ include 'include/colorbox_class.php';
 </head>
 <body id="page1">
 <?php
-if(@$_SESSION['zalogowany']==1){
-$login = $_SESSION['login'];
-$inf=mysql_query("SELECT * FROM uzytkownik WHERE login='$login'");
-$info=mysql_fetch_assoc($inf);
-echo '<table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed; 	text-align: center;  color: #FFFFFF;background-color: #313131; width:100%;"> 
-<td><strong>Zalogowany: '.$info['imie'].' '.$info['nazwisko'].'</strong></td></table>';}
+include 'include/belka.php';
 ?>
 
 <div class="extra">
 	<div class="main">
 	<header>
 			<div class="wrapper">
-				<h1><a href="index.html" id="logo">Tania baza noclegowa</a></h1>
+				<h1><a href="index.php" id="logo">Tania baza noclegowa</a></h1>
 				<div class="right">
 					<div class="wrapper">
 						<form id="search">
@@ -78,24 +74,17 @@ include 'include/wyszukiwarka.php';
 						<div class="wrapper"><input name="name" type="text" class="input" >Imie<br /></div>
 						<div class="wrapper"><input name="email" type="text" class="input" >E-mail:<br /></div>
 						<div class="wrapper"><textarea name="message" cols="1" rows="1" style="height:140px;"></textarea>Treść:<br /></div>
-						<a class="button" onclick="document.getElementById('ContactForm').submit()"><strong onfocus="MM_popupMsg('Dziękujemy za wysłanie wiadomości e-mail.')">Wyslij</strong></a>
-						<a class="button" onclick="document.getElementById('ContactForm').reset()"><strong>Wyczysc</strong></a>
+						<a class="button2" style = "cursor:pointer;hand" onclick="document.getElementById('ContactForm').submit()">Wyslij</a>
+						<a class="button2" style = "cursor:pointer;hand" onclick="document.getElementById('ContactForm').reset()">Czysc</a>
 					</div>
 				</form>
         	</article>
 		</header>
         <br><br><br>
 </div>
-<div class="body1">
-	<div class="main">
-<!-- footer -->
-		<footer>
-			Baza noclegowa<br/>
-			Copyright 2012
-		</footer>
-<!-- / footer -->
-	</div>
-</div>
+<?php
+include 'include/stopka.php';
+?>
 <script type="text/javascript"> Cufon.now(); </script>
 </body>
 </html>

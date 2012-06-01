@@ -37,14 +37,79 @@ echo '<br /><br /><br /><center><b><h1>Rezerwuj pokój<br /></h1></b><br /></br>
 <table id="regi" style="color:#000;margin:0 0 0 30px" border="0">
     <form action="rezerwacja_klient.php" method="post">
 	<input type="hidden" name="wolna_data" value="TRUE" />
-	<input type="hidden" name="id_pok" value="'.($_GET['rez']).'" />
-	<tr><td><div class="wrapper">Data przybycia:</td><td><input type="text" name="rezerwacja_od" id="datepicker" class="input input2"></div></td></tr>
-	<tr><td><div class="wrapper">Data wyjazdu:</td><td><input type="text" name="rezerwacja_do" id="datepicker1" class="input input2"></div></td></tr>
+	<input type="hidden" name="id_pok" value="'.$id_noc.'" />
+	<tr><td><div class="wrapper">Data i godz. przybycia:</td><td><input type="text" style="width:140px;" name="rezerwacja_od" id="datepicker" class="input input2"></div></td>
+	<td>
+					<select name="hour_od">
+					<option value="00">00</option>
+					<option value="01">01</option>
+					<option value="02">02</option>
+					<option value="03">03</option>
+					<option value="04">04</option>
+					<option value="05">05</option>
+					<option value="06">06</option>
+					<option value="07">07</option>
+					<option value="08">08</option>
+					<option value="09">09</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12" selected>12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+					<option value="22">22</option>
+					<option value="23">23</option>
+				</select><b>:</b>
+				<select name="minute_od">
+					<option value="00" selected>00</option>
+					<option value="15">15</option>
+					<option value="30">30</option>
+					<option value="45">45</option>
+				</select></td></tr>
+	<tr><td><div class="wrapper">Data i godz. wyjazdu:</td><td><input type="text" style="width:140px;" name="rezerwacja_do" id="datepicker1" class="input input2"></div></td>
+		<td>
+					<select name="hour_do">
+					<option value="00">00</option>
+					<option value="01">01</option>
+					<option value="02">02</option>
+					<option value="03">03</option>
+					<option value="04">04</option>
+					<option value="05">05</option>
+					<option value="06">06</option>
+					<option value="07">07</option>
+					<option value="08">08</option>
+					<option value="09">09</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12" selected>12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+					<option value="22">22</option>
+					<option value="23">23</option>
+				</select><b>:</b>
+				<select name="minute_do">
+					<option value="00" selected>00</option>
+					<option value="15">15</option>
+					<option value="30">30</option>
+					<option value="45">45</option>
+				</select></td></tr>
     </table><br />
 	<input type="submit" value="Dodaj" /><br>
 </center>';
 ?>	
-							<br>
 						</div>				
 </body>
 </html>

@@ -42,7 +42,7 @@ function confDel( url )
 	</tr>
 	<tr>
 		<td class="style1">
-		<a href="zmien_da.php">
+		<a href="uzytkownik_zmien_da.php">
 		<button>Zmień</button></a></td>
 	</tr>
 </table>
@@ -64,7 +64,7 @@ function confDel( url )
 	</tr>
 	<tr>
 		<td class="style1">
-		<a href="" onclick="confDel('usun.php');">
+		<a href="" onclick="confDel('uzytkownik_usun.php');">
 		<button>Usuń</button></a></td>
 	</tr>
 </table>

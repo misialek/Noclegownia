@@ -60,7 +60,12 @@ class Noclegownia{
                         ORDER BY noclegownia.nazwa",
                         mysql_real_escape_string($userId));
     } else if($userType == Uzytkownik::ADMIN){
-      $query = sprintf("SELECT " . self::WSZYSTKIE_KOLUMNY . " FROM noclegownia");
+	if(!isset($_GET['id'])){
+      $query = sprintf("SELECT " . self::WSZYSTKIE_KOLUMNY . " FROM noclegownia");}
+	  else {
+	  $id = $_GET['id'];
+	  $query = sprintf("SELECT " . self::WSZYSTKIE_KOLUMNY . " FROM noclegownia WHERE noclegownia.id = '$id'
+	  ORDER BY noclegownia.nazwa");}
     } else {
       throw new Exception("Uzytkownik nie ma dostepu");
     }

@@ -12,6 +12,7 @@ include 'db.php';
 <head>
 <title>O nas</title>
 <meta charset="utf-8">
+<link rel="stylesheet" href="button/stylesheets/css3buttons.css" type="text/css" />
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
@@ -38,19 +39,12 @@ include 'include/colorbox_class.php';
 </head>
 <body id="page1">
 <?php
-if(@$_SESSION['zalogowany']==1){
-$login = $_SESSION['login'];
-$inf=mysql_query("SELECT * FROM uzytkownik WHERE login='$login'");
-$info=mysql_fetch_assoc($inf);
-echo '<table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed; 	text-align: center;  color: #FFFFFF;background-color: #313131; width:100%;"> 
-<td><strong>Zalogowany: '.$info['imie'].' '.$info['nazwisko'].'</strong></td></table>';}
+include 'include/belka.php';
 ?>
-
 <div class="extra">
 	<div class="main">
-	<header>
 			<div class="wrapper">
-				<h1><a href="index.html" id="logo">Tania baza noclegowa</a></h1>
+				<h1><a href="index.php" id="logo">Tania baza noclegowa</a></h1>
 				<div class="right">
 					<div class="wrapper">
 						<form id="search">
@@ -71,24 +65,32 @@ include 'include/zakladki.php';
 <?php
 include 'include/wyszukiwarka.php';
 ?>
-			<article class="col1 pad_left1">
-				<div class="text">
-					<h2>O nas</h2>
-				</div>
+			<article class="col2 pad_left1">
+				<span style="font-size:32px;color:#323232;line-height:40px;padding:4px 0 15px 0;letter-spacing:-1px"><strong>O NAS</strong></span>
+			<br /><br /><br />
+			<table width="100%">
+			<tr>
+				<td width="45%">
+				<span style="font-size:20px;padding:4px 0 18px 0;letter-spacing:-1px"><center>Stronę przygotowali</center></span><br /><br />
+				<span style="font-size:16px">
+				<li />Michał Tomaszczyk<br /><br />
+				<li />Maciej<br /><br />
+				<li />Łukasz Wachowiak<br /><br />
+				<li />Bartosz Wyzuj
+				</span>
+				</td>
+				<td>
+				<br /><img src="images/wsnhid.gif"  height="" width="260" />
+				</td>
+			</tr>
+			</table><br /><br /><br />
+			<span style="font-size:12px">Strona powstała w celu zaliczenia przedmiotu "Projekt zespołowy".</span>
 			</article>
-		</header>
-        
-	<div class="block"></div>
+        <section id="content"></section>
 </div>
-<div class="body1">
-	<div class="main">
-<!-- footer -->
-		<footer>
-			Baza noclegowa<br/>
-			Copyright 2012
-		</footer>
-<!-- / footer -->
-	</div>
+<?php
+include 'include/stopka.php';
+?>
 </div>
 <script type="text/javascript"> Cufon.now(); </script>
 </body>

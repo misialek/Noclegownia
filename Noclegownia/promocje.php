@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 /*if(isset($_GET['wylo']) && $_GET['wylo']=='tak'){
 	session_destroy();
@@ -12,6 +12,7 @@ include 'db.php';
 <head>
 <title>Promocje</title>
 <meta charset="utf-8">
+<link rel="stylesheet" href="button/stylesheets/css3buttons.css" type="text/css" />
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
@@ -39,19 +40,13 @@ include 'include/colorbox_class.php';
 </head>
 <body id="page1">
 <?php
-if(@$_SESSION['zalogowany']==1){
-$login = $_SESSION['login'];
-$inf=mysql_query("SELECT * FROM uzytkownik WHERE login='$login'");
-$info=mysql_fetch_assoc($inf);
-echo '<table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed; 	text-align: center;  color: #FFFFFF;background-color: #313131; width:100%;"> 
-<td><strong>Zalogowany: '.$info['imie'].' '.$info['nazwisko'].'</strong></td></table>';}
+include 'include/belka.php';
 ?>
 
 <div class="extra">
 	<div class="main">
-	<header>
 			<div class="wrapper">
-				<h1><a href="index.html" id="logo">Tania baza noclegowa</a></h1>
+				<h1><a href="index.php" id="logo">Tania baza noclegowa</a></h1>
 				<div class="right">
 					<div class="wrapper">
 						<form id="search">
@@ -69,29 +64,20 @@ include 'include/menu.php';
 include 'include/zakladki.php';
 ?>
 			</nav>
-			<nav>
 <?php
 include 'include/wyszukiwarka.php';
 ?>
-			</nav>
-			<article class="col1 pad_left1">
-				<div class="text">
-					<h2>Promocje</h2>
-				</div>
+			<article class="col2 pad_left1">
+			<h2>Promocje</h2>
+<?php
+include 'promocje_pokoje.php';
+?>
 			</article>
-		</header>
-        
-	<div class="block"></div>
+        <section id="content"></section>
 </div>
-<div class="body1">
-	<div class="main">
-<!-- footer -->
-		<footer>
-			Baza noclegowa<br/>
-			Copyright 2012
-		</footer>
-<!-- / footer -->
-	</div>
+<?php
+include 'include/stopka.php';
+?>
 </div>
 <script type="text/javascript"> Cufon.now(); </script>
 </body>
