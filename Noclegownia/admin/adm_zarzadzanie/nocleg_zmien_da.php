@@ -51,7 +51,7 @@ echo '<center><h1>Edycja Noclegowni</h1>
 		<strong>Miejscowość:</strong><br /><input type="text" name="miejscowosc" value="'.$nocl['miejscowosc'].'" /><br />
 		<strong>Ulica:</strong><br /><input type="text" name="ulica" value="'.$nocl['ulica'].'" /><br />
 		<strong>Kod pocztowy:</strong><br /><input type="text" name="kod_pocztowy" value="'.$nocl['kod_pocztowy'].'" /><br />
-		<strong>Nr rachunku: </strong><br /><input style="width: 230px;" name="nr_bank" type="text" class="input" ><br /><span style="font-size:10">np. 32 2130 0004 2001 0354 6652 0001</span><br />
+		<strong>Nr rachunku: </strong><br /><input style="width: 230px;" name="nr_bank" type="text" value="'.$nocl['ocena'].'" ><br /><span style="font-size:10">np. 32 2130 0004 2001 0354 6652 0001</span><br />
 		<strong>Opis:</strong><br /><textarea name="opis" rows="2" style="height:60px; width:200px;">'.$nocl['opis'].'</textarea><br />
 		<strong>Rodzaj noclegowni:</strong> '.$nocl['typ'].'<br />
 			<strong>Zmień rodzaj noclegowni:</strong><br />

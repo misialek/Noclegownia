@@ -26,7 +26,7 @@ background: #D0C6A4
     <input type="hidden" name="lista_pokoi" />
 	<div style='text-align:left;'>
 	<?php
-	if(isset($_GET['id'])){echo '<br />';}else{ ?>
+	if(isset($_GET['id'])){}else{ ?>
 	<center><input type="button" value="Dodaj pokoj" onclick="location.href = 'index.php?akcja=dodajPokoj';" /></center>
 	<?php } ?>
 	</div>

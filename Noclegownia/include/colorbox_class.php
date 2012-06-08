@@ -7,8 +7,8 @@ if (mysql_num_rows($colorbox_rozmiar) == 1){ ?>
 <script type="text/javascript">
   $(document).ready(function(){
 $(".rez").colorbox({iframe:true, width:"1066", height:"600"});
-$(".zarz").colorbox({iframe:true, width:"626px", height:"580px"});
-$(".pokoj").colorbox({iframe:true, width:"620px", height:"560px"});
+$(".zarz").colorbox({iframe:true, width:"626px", height:"450px"});
+$(".pokoj").colorbox({iframe:true, width:"620px", height:"540px"});
 $(".user").colorbox({iframe:true, width:"600px", height:"440px"});
 $(".pokoje").colorbox({iframe:true, width:"1066", height:"600"});
 $(".haslo").colorbox({iframe:true, width:"500px", height:"450px"});
@@ -40,7 +40,7 @@ $(".zarz").colorbox({iframe:true, width:"600px", height:"520px"});
   $(document).ready(function(){
 $(".zlec").colorbox({iframe:true, width:"600px", height:"400px"});
 $(".log").colorbox({iframe:true, width:"465px", height:"465px"});
-$(".reg").colorbox({iframe:true, width:"465px", height:"490px"});
+$(".reg").colorbox({iframe:true, width:"465px", height:"440px"});
 $(".spr").colorbox({iframe:true, width:"350px", height:"380px"});
  });
 </script>

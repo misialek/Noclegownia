@@ -37,20 +37,20 @@ if ($_POST["zmien_dane_noc"]) {
         $blad++;
         echo '<p>Proszę poprawnie wpisać kod pocztowy. </p>';}
 
-        if (strlen($nr_konta) < 34 or strlen($nr_konta) > 43 ) {
+        if (strlen($nr_konta) <= 25 or strlen($nr_konta) >= 33 ) {
         $blad++;
         echo '<p>Proszę poprawnie wpisać nr rachunku. </p>';}
 		
         if($blad == 0){
 		if($zmien_zdj == '0'){
-		$zapytaj = "UPDATE $tabela SET nazwa='$nazwa', miejscowosc='$miejscowosc', kod_pocztowy='$kod_pocztowy', opis='$opis', typ='$typ_noc' WHERE id='$id'";
+		$zapytaj = "UPDATE $tabela SET ocena='$nr_konta', nazwa='$nazwa', miejscowosc='$miejscowosc', kod_pocztowy='$kod_pocztowy', opis='$opis', typ='$typ_noc' WHERE id='$id'";
 		if(mysql_query($zapytaj)){
 		echo '<p>Zmiany zostały wprowadzone.</p>';}
 		else{
 		echo 'błąd nr: '.$typ_noc.' blad '.$blad.'';
 		}}else{
 		if($foto != ''){
-		$zapytaj = "UPDATE $tabela SET ocena='$nr_konta' nazwa='$nazwa', miejscowosc='$miejscowosc', kod_pocztowy='$kod_pocztowy', opis='$opis', typ='$typ_noc', zdjecie='$foto' WHERE id='$id'";
+		$zapytaj = "UPDATE $tabela SET ocena='$nr_konta', nazwa='$nazwa', miejscowosc='$miejscowosc', kod_pocztowy='$kod_pocztowy', opis='$opis', typ='$typ_noc', zdjecie='$foto' WHERE id='$id'";
 		if(mysql_query($zapytaj)){
 		echo '<p>Zmiany zostały wprowadzone</p>';}
 		else{

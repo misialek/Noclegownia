@@ -65,7 +65,7 @@ $obecna_data = mktime($hour_o, $minute_o, 0, $month, $day, $year);
 	$list = "Witaj $login!
 	
 Kliknij w poniższy link, aby aktywować rezerwację.
-http://noclegownia.keed.pl/komunikaty.php?login=$log&id=$id_rez";
+http://noclegownia.net16.net/komunikaty.php?login=$log&id=$id_rez";
 	mail($email['email'], "Potwierdzenie rezerwacji.", $list, $mail_to);}
 	}
 	}

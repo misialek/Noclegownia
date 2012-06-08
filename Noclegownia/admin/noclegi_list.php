@@ -47,7 +47,7 @@ echo '<tr align="center">
 		<td class="td">'.$result["typ"].'</td>
 		<td class="td">'.$result["nazwa"].'</td>
 		<td class="td">ul. '.$result["ulica"].', '.$result["kod_pocztowy"].' '.$result["miejscowosc"].'</td>
-		<td class="td2"><a class="zarz" href="adm_zarzadzanie/nocleg_zmien_da.php?id='.$result['id'].'"><button>Edytuj</button></a></td>
+		<td class="td2"><a class="pokoj" href="adm_zarzadzanie/nocleg_zmien_da.php?id='.$result['id'].'"><button>Edytuj</button></a></td>
 		<td class="td2"><a class="pokoje" href="../zarzadzanie_noclegownia_administrator/index.php?akcja=listujPokoje&id='.$result['id'].'"><button>Pokoje</button></a></td>
 		<td class="td2"><a href="adm_zarzadzanie/noclegownia_usun.php?id='.$result['id'].'"><button>Usuń</button></a></td>
 	</tr>';	

@@ -1,5 +1,5 @@
 <?php
-$mail_to = "From: info@noclegownia.keed.pl \nContent-Type:".
+$mail_to = "From: administracja@noclegownia.net16.net \nContent-Type:".
 			' text/plain;charset="UTF-8"'.
 			"\nContent-Transfer-Encoding: 8bit";
 ?>

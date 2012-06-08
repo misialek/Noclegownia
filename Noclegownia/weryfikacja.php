@@ -1,6 +1,6 @@
 ﻿<title>Aktywacja</title>
 <?php
- header('refresh: 5; url=http://noclegownia.keed.pl/index.php');
+ header('refresh: 5; url=http://noclegownia.net16.net/index.php');
 if ($_GET['weryfikacja'] == 'potwierdz') {
  
     include 'db.php';

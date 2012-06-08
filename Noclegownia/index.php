@@ -70,7 +70,7 @@ include 'include/wyszukiwarka.php';
 			<article class="col1 pad_left1">
 				<div class="text">
 					<h2>Mamy najlepsze oferty</h2>
-					<p>&nbsp;&nbsp;&nbsp;&nbsp;W nszej ofercie masz możliwość rezerwacji kwater prywatnych, hoteli, moteli, schronisk i miejsc agroturystycznych. <br />Dzięki takiej różnorodności nasza oferta jest niepowtarzalna. Zapraszamy do wykonywania rezerwacji!</p>
+					<p>W nszej ofercie masz możliwość rezerwacji kwater prywatnych, hoteli, moteli, schronisk i miejsc agroturystycznych. <br />Dzięki takiej różnorodności nasza oferta jest niepowtarzalna. Zapraszamy do wykonywania rezerwacji!</p>
 					<a href="przegladaj.php" class="button2">Zobacz wiecej</a>
 				</div>
 			</article>

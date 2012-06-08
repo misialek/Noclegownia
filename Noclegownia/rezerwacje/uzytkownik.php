@@ -45,12 +45,12 @@ function wysylaj()
 	FROM pokoj
 	JOIN noclegownia ON ( id_miejsce = id )
    	JOIN rezerwacje ON ( id_pok = id_pokoj )
-	WHERE login='$login'
+	WHERE login='$login'AND rezerwacje.status != 0
 	ORDER BY status";   
 	
 	echo	'<table width="100%">
 	<tr>
-	<th>Id</th><th>Nazwa noclegowni</th><th>Pokój</th><th>Data i godz. od</th><th>Data i godz. do</th><th>Ile dni i godz.</th><th>Status</th><th>Cena</th><th></th><th></th></tr>';
+	<th>Id</th><th>Nazwa noclegowni</th><th>Pokój</th><th>Data i godz. od</th><th>Data i godz. do</th><th>Ile dni i godz.</th><th>Status</th><th>Cena</th><th>&nbsp;&nbsp;&nbsp;</th><th>&nbsp;&nbsp;&nbsp;</th></tr>';
 	$query=mysql_query($sql);
 	while($result=mysql_fetch_assoc($query))
 	{
