@@ -5,11 +5,11 @@
 if(@$_SESSION['zalogowany']==1){
 $recepcjonista=(mysql_query("SELECT * FROM uzytkownik WHERE login='$login' AND typ_konta = 10"));
 if (mysql_num_rows($recepcjonista) == 1) {
-echo '<li><a href="admin/index.php">Zarządzanie</a></li>';
 ?><li><a style="cursor:pointer;hand" onclick="window.open('<?php echo 'rezerwacje/uzytkownik.php';  ?>', 'Komentarze', 'toolbar=no, scrollbars=yes, location=no, height=600,width=1066');">Rezerwacje</a></li><?php
+echo '<li><a href="admin/index.php">Zarządzanie</a></li>';
 }else{
-?><li><a class='zarz' href="zarzadzanie/uzytkownik.php">Zarządzanie</a></li>
-<li><a class='rez' href="rezerwacje/uzytkownik.php">Rezerwacje</a></li><?php
+?><li><a class='rez' href="rezerwacje/uzytkownik.php">Rezerwacje</a></li>
+<li><a class='zarz' href="zarzadzanie/uzytkownik.php">Zarządzanie</a></li><?php
 	}
 ?>
 <li><a href="index.php?wylo=tak">Wyloguj</a></li>

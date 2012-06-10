@@ -29,7 +29,7 @@ WHERE typ='Hotel' AND cena IN (SELECT MIN(cena) FROM pokoj JOIN noclegownia ON (
 						echo '<div style="display: none" class="pok'.$id_noclegownia.'">';
                         $sql2="SELECT pokoj.id_pok, pokoj.id_miejsce, pokoj.tytul, pokoj.opis, MIN(pokoj.cena) AS cena, pokoj.tv, pokoj.lodowka, pokoj.wc, pokoj.prszynic, pokoj.wanna, pokoj.jacuzzi, pokoj.klimatyzacja, pokoj.internet, pokoj.zdjecie 
 						FROM pokoj
-						WHERE id_miejsce=$id_noclegownia";
+						WHERE id_miejsce=$id_noclegownia AND cena IN (SELECT MIN(cena) FROM pokoj JOIN noclegownia ON (id_miejsce = id) WHERE typ='Hotel')";
                     	$query2=mysql_query($sql2);
                     	while($result2=mysql_fetch_assoc($query2))
                 	       {
@@ -60,7 +60,7 @@ WHERE typ='Agroturystyka' AND cena IN (SELECT MIN(cena) FROM pokoj JOIN noclegow
 						echo '<div style="display: none" class="pok'.$id_noclegownia.'">';
                         $sql2="SELECT pokoj.id_pok, pokoj.id_miejsce, pokoj.tytul, pokoj.opis, MIN(pokoj.cena) AS cena, pokoj.tv, pokoj.lodowka, pokoj.wc, pokoj.prszynic, pokoj.wanna, pokoj.jacuzzi, pokoj.klimatyzacja, pokoj.internet, pokoj.zdjecie 
 						FROM pokoj
-						WHERE id_miejsce=$id_noclegownia";
+						WHERE id_miejsce=$id_noclegownia AND cena IN (SELECT MIN(cena) FROM pokoj JOIN noclegownia ON (id_miejsce = id) WHERE typ='Agroturystyka')";
                     	$query2=mysql_query($sql2);
                     	while($result2=mysql_fetch_assoc($query2))
                 	       {
@@ -91,7 +91,7 @@ WHERE typ='Kwatera prywatna' AND cena IN (SELECT MIN(cena) FROM pokoj JOIN nocle
 						echo '<div style="display: none" class="pok'.$id_noclegownia.'">';
                         $sql2="SELECT pokoj.id_pok, pokoj.id_miejsce, pokoj.tytul, pokoj.opis, MIN(pokoj.cena) AS cena, pokoj.tv, pokoj.lodowka, pokoj.wc, pokoj.prszynic, pokoj.wanna, pokoj.jacuzzi, pokoj.klimatyzacja, pokoj.internet, pokoj.zdjecie 
 						FROM pokoj
-						WHERE id_miejsce=$id_noclegownia";
+						WHERE id_miejsce=$id_noclegownia AND cena IN (SELECT MIN(cena) FROM pokoj JOIN noclegownia ON (id_miejsce = id) WHERE typ='Kwatera prywatna')";
                     	$query2=mysql_query($sql2);
                     	while($result2=mysql_fetch_assoc($query2))
                 	       {
@@ -122,7 +122,7 @@ WHERE typ='Schronisko' AND cena IN (SELECT MIN(cena) FROM pokoj JOIN noclegownia
 						echo '<div style="display: none" class="pok'.$id_noclegownia.'">';
                         $sql2="SELECT pokoj.id_pok, pokoj.id_miejsce, pokoj.tytul, pokoj.opis, MIN(pokoj.cena) AS cena, pokoj.tv, pokoj.lodowka, pokoj.wc, pokoj.prszynic, pokoj.wanna, pokoj.jacuzzi, pokoj.klimatyzacja, pokoj.internet, pokoj.zdjecie 
 						FROM pokoj
-						WHERE id_miejsce=$id_noclegownia";
+						WHERE id_miejsce=$id_noclegownia AND cena IN (SELECT MIN(cena) FROM pokoj JOIN noclegownia ON (id_miejsce = id) WHERE typ='Schronisko')";
                     	$query2=mysql_query($sql2);
                     	while($result2=mysql_fetch_assoc($query2))
                 	       {
@@ -153,7 +153,7 @@ WHERE typ='Motel' AND cena IN (SELECT MIN(cena) FROM pokoj JOIN noclegownia ON (
 						echo '<div style="display: none" class="pok'.$id_noclegownia.'">';
                         $sql2="SELECT pokoj.id_pok, pokoj.id_miejsce, pokoj.tytul, pokoj.opis, MIN(pokoj.cena) AS cena, pokoj.tv, pokoj.lodowka, pokoj.wc, pokoj.prszynic, pokoj.wanna, pokoj.jacuzzi, pokoj.klimatyzacja, pokoj.internet, pokoj.zdjecie 
 						FROM pokoj
-						WHERE id_miejsce=$id_noclegownia";
+						WHERE id_miejsce=$id_noclegownia AND cena IN (SELECT MIN(cena) FROM pokoj JOIN noclegownia ON (id_miejsce = id) WHERE typ='Motel')";
                     	$query2=mysql_query($sql2);
                     	while($result2=mysql_fetch_assoc($query2))
                 	       {

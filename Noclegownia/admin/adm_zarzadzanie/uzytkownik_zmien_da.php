@@ -28,7 +28,7 @@ echo '<center><b><h1>Edycja danych osobowych</h1></b><br /><br /><br />
 		if($pole["typ_konta"] == 20){$user='Recepcjonista';}
 		if($pole["typ_konta"] == 30){$user='Klient';}
 		echo '<tr class="reglbl"><td width="33%"><strong>Aktualny typ konta:</strong></td><td>'.$user.'</td></tr>
-		<tr><td><input type="radio" name="typ" value="30" '; if($pole['typ_konta']==30){echo 'checked';} echo'/>Użytkownik</td>
+		<tr><td><input type="radio" name="typ" value="30" '; if($pole['typ_konta']==30){echo 'checked';} echo'/>Klient</td>
 			<td><input type="radio" name="typ" value="20" '; if($pole['typ_konta']==20){echo 'checked';} echo'/>Recepcjonista</td>
 			<td><input type="radio" name="typ" value="10" '; if($pole['typ_konta']==10){echo 'checked';} echo'/>Administrator</td></tr>
 			<tr><td><strong>Zmień noclegownie:</strong></td><td>
