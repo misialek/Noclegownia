@@ -28,7 +28,7 @@ if(isset($_GET['start'])){
 	$wynik1=mysql_query($sql);
 	
 	echo '<table border="5" width="640">
-		<tr align="center">
+		<tr>
 			<th class="th">Typ</th>
 			<th class="th">Nazwa</th>
 			<th class="th">Miejscowość</th>
