@@ -40,7 +40,7 @@ if(isset($_GET['start'])){
 if( mysql_num_rows( $wynik1 ) > 0){
 	while($result=mysql_fetch_assoc($wynik1)){	
 	
-echo '<tr align="center">
+echo '<tr>
 		<td class="td">'.$result["typ"].'</td>
 		<td class="td">'.$result["nazwa"].'</td>
 		<td class="td">ul. '.$result["ulica"].', '.$result["kod_pocztowy"].' '.$result["miejscowosc"].'</td>

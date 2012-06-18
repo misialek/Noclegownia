@@ -45,7 +45,7 @@ if($result["typ_konta"] == 10){$user='Administrator';}
 if($result["typ_konta"] == 20){$user='Recepcjonista';}
 if($result["typ_konta"] == 30){$user='Klient';}
 
-echo '<tr align="center">
+echo '<tr>
 		<td class="td">'.$result["login"].'</td>
 		<td class="td">'.$result["imie"].'</td>
 		<td class="td">'.$result["nazwisko"].'</td>
